@@ -1,0 +1,102 @@
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following packages were automatically installed and are no longer required:
+  libssl-dev libssl-doc
+Use 'apt-get autoremove' to remove them.
+The following extra packages will be installed:
+  libexpat1-dev libpython3-dev libpython3.3 libpython3.3-dev python3-dev
+  python3.3-dev
+The following NEW packages will be installed
+  libexpat1-dev libpython3-dev libpython3.3 libpython3.3-dev python3-dev
+  python3-pip python3.3-dev
+0 upgraded, 7 newly installed, 0 to remove and 7 not upgraded.
+Need to get 30.0 MB of archives.
+After this operation, 46.2 MB of additional disk space will be used.
+Do you want to continue [Y/n]? Get:1 http://ubuntu.mirrors.ovh.net/ftp.ubuntu.com/ubuntu/ saucy-updates/main libpython3.3 amd64 3.3.2-7ubuntu3.1 [1,640 kB]
+Get:2 http://ubuntu.mirrors.ovh.net/ftp.ubuntu.com/ubuntu/ saucy/main libexpat1-dev amd64 2.1.0-4 [212 kB]
+Get:3 http://ubuntu.mirrors.ovh.net/ftp.ubuntu.com/ubuntu/ saucy-updates/main libpython3.3-dev amd64 3.3.2-7ubuntu3.1 [27.5 MB]
+Downloading/unpacking flask
+  Running setup.py (path:/tmp/pip_build_root/flask/setup.py) egg_info for package flask
+    
+    warning: no files found matching '*' under directory 'tests'
+    warning: no previously-included files matching '*.pyc' found under directory 'docs'
+    warning: no previously-included files matching '*.pyo' found under directory 'docs'
+    warning: no previously-included files matching '*.pyc' found under directory 'tests'
+    warning: no previously-included files matching '*.pyo' found under directory 'tests'
+    warning: no previously-included files matching '*.pyc' found under directory 'examples'
+    warning: no previously-included files matching '*.pyo' found under directory 'examples'
+    no previously-included directories found matching 'docs/_build'
+    no previously-included directories found matching 'docs/_themes/.git'
+Downloading/unpacking Werkzeug>=0.7 (from flask)
+  Running setup.py (path:/tmp/pip_build_root/Werkzeug/setup.py) egg_info for package Werkzeug
+    
+    warning: no files found matching '*' under directory 'werkzeug/debug/templates'
+    warning: no files found matching '*' under directory 'tests'
+    warning: no previously-included files matching '*.pyc' found under directory 'docs'
+    warning: no previously-included files matching '*.pyo' found under directory 'docs'
+    warning: no previously-included files matching '*.pyc' found under directory 'tests'
+    warning: no previously-included files matching '*.pyo' found under directory 'tests'
+    warning: no previously-included files matching '*.pyc' found under directory 'examples'
+    warning: no previously-included files matching '*.pyo' found under directory 'examples'
+    no previously-included directories found matching 'docs/_build'
+Downloading/unpacking Jinja2>=2.4 (from flask)
+  Running setup.py (path:/tmp/pip_build_root/Jinja2/setup.py) egg_info for package Jinja2
+    
+    warning: no files found matching '*' under directory 'custom_fixers'
+    warning: no previously-included files matching '*' found under directory 'docs/_build'
+    warning: no previously-included files matching '*.pyc' found under directory 'jinja2'
+    warning: no previously-included files matching '*.pyc' found under directory 'docs'
+    warning: no previously-included files matching '*.pyo' found under directory 'jinja2'
+    warning: no previously-included files matching '*.pyo' found under directory 'docs'
+Downloading/unpacking itsdangerous>=0.21 (from flask)
+  Running setup.py (path:/tmp/pip_build_root/itsdangerous/setup.py) egg_info for package itsdangerous
+    
+    warning: no previously-included files matching '*' found under directory 'docs/_build'
+Downloading/unpacking markupsafe (from Jinja2>=2.4->flask)
+  Downloading MarkupSafe-0.23.tar.gz
+  Running setup.py (path:/tmp/pip_build_root/markupsafe/setup.py) egg_info for package markupsafe
+    
+Installing collected packages: flask, Werkzeug, Jinja2, itsdangerous, markupsafe
+  Running setup.py install for flask
+    
+    warning: no files found matching '*' under directory 'tests'
+    warning: no previously-included files matching '*.pyc' found under directory 'docs'
+    warning: no previously-included files matching '*.pyo' found under directory 'docs'
+    warning: no previously-included files matching '*.pyc' found under directory 'tests'
+    warning: no previously-included files matching '*.pyo' found under directory 'tests'
+    warning: no previously-included files matching '*.pyc' found under directory 'examples'
+    warning: no previously-included files matching '*.pyo' found under directory 'examples'
+    no previously-included directories found matching 'docs/_build'
+    no previously-included directories found matching 'docs/_themes/.git'
+  Running setup.py install for Werkzeug
+    
+    warning: no files found matching '*' under directory 'werkzeug/debug/templates'
+    warning: no files found matching '*' under directory 'tests'
+    warning: no previously-included files matching '*.pyc' found under directory 'docs'
+    warning: no previously-included files matching '*.pyo' found under directory 'docs'
+    warning: no previously-included files matching '*.pyc' found under directory 'tests'
+    warning: no previously-included files matching '*.pyo' found under directory 'tests'
+    warning: no previously-included files matching '*.pyc' found under directory 'examples'
+    warning: no previously-included files matching '*.pyo' found under directory 'examples'
+    no previously-included directories found matching 'docs/_build'
+  Running setup.py install for Jinja2
+    
+    warning: no files found matching '*' under directory 'custom_fixers'
+    warning: no previously-included files matching '*' found under directory 'docs/_build'
+    warning: no previously-included files matching '*.pyc' found under directory 'jinja2'
+    warning: no previously-included files matching '*.pyc' found under directory 'docs'
+    warning: no previously-included files matching '*.pyo' found under directory 'jinja2'
+    warning: no previously-included files matching '*.pyo' found under directory 'docs'
+  Running setup.py install for itsdangerous
+    
+    warning: no previously-included files matching '*' found under directory 'docs/_build'
+  Running setup.py install for markupsafe
+    
+    building 'markupsafe._speedups' extension
+    x86_64-linux-gnu-gcc -pthread -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -fPIC -I/usr/include/python3.4m -c markupsafe/_speedups.c -o build/temp.linux-x86_64-3.4/markupsafe/_speedups.o
+    x86_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-Bsymbolic-functions -Wl,-z,relro -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 build/temp.linux-x86_64-3.4/markupsafe/_speedups.o -o build/lib.linux-x86_64-3.4/markupsafe/_speedups.cpython-34m.so
+Successfully installed flask Werkzeug Jinja2 itsdangerous markupsafe
+Cleaning up...
+Requirement already satisfied (use --upgrade to upgrade): requests in /usr/lib/python3/dist-packages
+Cleaning up...

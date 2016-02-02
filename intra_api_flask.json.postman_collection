@@ -1,0 +1,475 @@
+{
+	"id": "ca101120-9577-a7dd-0f69-2497c28312d6",
+	"name": "intra_api_flask",
+	"description": "",
+	"order": [
+		"b352b552-a411-13ff-7a5e-753120af0bfc",
+		"1bb3662f-c888-d005-6cce-960edba4defa",
+		"2fa61b06-f48f-5ab7-6487-a172e639379c",
+		"f23e2d32-417d-87f7-17d9-5e221f88c4c7",
+		"f01ccb42-94f4-5520-4aa8-f9644fb464bd",
+		"7e728a56-67d7-2009-bf5d-562bc8a628ec",
+		"63490181-7490-1afb-f69b-75407202e173",
+		"b6b86353-da65-def6-f21a-300491056348",
+		"2005ba12-87bf-9c40-1a19-fe0a0f106be5",
+		"ac0de931-2289-55ee-9acf-2964960ec8d8",
+		"06eeae5c-96ca-5927-c2d2-286dc29fe284",
+		"f10fae0b-4261-3e48-a3ca-26e7fc3277ca",
+		"7d646f14-c58a-3e42-1c16-cfb21846d66f"
+	],
+	"folders": [],
+	"timestamp": 1411662789056,
+	"synced": false,
+	"requests": [
+		{
+			"id": "06eeae5c-96ca-5927-c2d2-286dc29fe284",
+			"headers": "",
+			"url": "localhost/alerts",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "POST",
+			"data": [
+				{
+					"key": "login",
+					"value": "",
+					"type": "text"
+				},
+				{
+					"key": "password",
+					"value": "",
+					"type": "text"
+				}
+			],
+			"dataMode": "params",
+			"name": "/alerts",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1411663568749,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"collectionId": "ca101120-9577-a7dd-0f69-2497c28312d6",
+			"synced": false
+		},
+		{
+			"id": "1bb3662f-c888-d005-6cce-960edba4defa",
+			"headers": "",
+			"url": "localhost/planning",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "POST",
+			"data": [
+				{
+					"key": "login",
+					"value": "",
+					"type": "text"
+				},
+				{
+					"key": "password",
+					"value": "",
+					"type": "text"
+				},
+				{
+					"key": "start",
+					"value": "2013-01-01",
+					"type": "text"
+				},
+				{
+					"key": "end",
+					"value": "2014-01-01",
+					"type": "text"
+				}
+			],
+			"dataMode": "params",
+			"name": "/planning",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1411663131687,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"collectionId": "ca101120-9577-a7dd-0f69-2497c28312d6",
+			"synced": false
+		},
+		{
+			"id": "2005ba12-87bf-9c40-1a19-fe0a0f106be5",
+			"headers": "",
+			"url": "localhost/marks",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "POST",
+			"data": [
+				{
+					"key": "login",
+					"value": "",
+					"type": "text"
+				},
+				{
+					"key": "password",
+					"value": "",
+					"type": "text"
+				}
+			],
+			"dataMode": "params",
+			"name": "/marks",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1411663534581,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"collectionId": "ca101120-9577-a7dd-0f69-2497c28312d6",
+			"synced": false
+		},
+		{
+			"id": "2fa61b06-f48f-5ab7-6487-a172e639379c",
+			"headers": "",
+			"url": "localhost/susies",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "POST",
+			"data": [
+				{
+					"key": "login",
+					"value": "",
+					"type": "text"
+				},
+				{
+					"key": "password",
+					"value": "",
+					"type": "text"
+				},
+				{
+					"key": "start",
+					"value": "2013-01-01",
+					"type": "text"
+				},
+				{
+					"key": "end",
+					"value": "2014-01-01",
+					"type": "text"
+				},
+				{
+					"key": "get",
+					"value": "registered",
+					"type": "text"
+				}
+			],
+			"dataMode": "params",
+			"name": "/susies",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1411663263513,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"collectionId": "ca101120-9577-a7dd-0f69-2497c28312d6",
+			"synced": false
+		},
+		{
+			"id": "63490181-7490-1afb-f69b-75407202e173",
+			"headers": "",
+			"url": "localhost/projects",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "POST",
+			"data": [
+				{
+					"key": "login",
+					"value": "",
+					"type": "text"
+				},
+				{
+					"key": "password",
+					"value": "",
+					"type": "text"
+				},
+				{
+					"key": "get",
+					"value": "registered",
+					"type": "text"
+				}
+			],
+			"dataMode": "params",
+			"name": "/projects",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1411663496120,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"collectionId": "ca101120-9577-a7dd-0f69-2497c28312d6",
+			"synced": false
+		},
+		{
+			"id": "7d646f14-c58a-3e42-1c16-cfb21846d66f",
+			"headers": "",
+			"url": "localhost/token",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "POST",
+			"data": [
+				{
+					"key": "login",
+					"value": "",
+					"type": "text"
+				},
+				{
+					"key": "password",
+					"value": "",
+					"type": "text"
+				},
+				{
+					"key": "scolaryear",
+					"value": "2014",
+					"type": "text"
+				},
+				{
+					"key": "codemodule",
+					"value": "B-BDD-350",
+					"type": "text"
+				},
+				{
+					"key": "codeinstance",
+					"value": "PAR-4-1",
+					"type": "text"
+				}
+			],
+			"dataMode": "params",
+			"name": "/token",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1411663771521,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"collectionId": "ca101120-9577-a7dd-0f69-2497c28312d6",
+			"synced": false
+		},
+		{
+			"id": "7e728a56-67d7-2009-bf5d-562bc8a628ec",
+			"headers": "",
+			"url": "localhost/susie/get",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "POST",
+			"data": [
+				{
+					"key": "login",
+					"value": "",
+					"type": "text"
+				},
+				{
+					"key": "password",
+					"value": "",
+					"type": "text"
+				},
+				{
+					"key": "id",
+					"value": "6301",
+					"type": "text"
+				}
+			],
+			"dataMode": "params",
+			"name": "/susie/get",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1411663449427,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"collectionId": "ca101120-9577-a7dd-0f69-2497c28312d6",
+			"synced": false
+		},
+		{
+			"id": "ac0de931-2289-55ee-9acf-2964960ec8d8",
+			"headers": "",
+			"url": "localhost/messages",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "POST",
+			"data": [
+				{
+					"key": "login",
+					"value": "",
+					"type": "text"
+				},
+				{
+					"key": "password",
+					"value": "",
+					"type": "text"
+				}
+			],
+			"dataMode": "params",
+			"name": "/messages",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1411663545821,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"collectionId": "ca101120-9577-a7dd-0f69-2497c28312d6",
+			"synced": false
+		},
+		{
+			"id": "b352b552-a411-13ff-7a5e-753120af0bfc",
+			"headers": "",
+			"url": "localhost/login",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"data": [
+				{
+					"key": "login",
+					"value": "",
+					"type": "text"
+				},
+				{
+					"key": "password",
+					"value": "",
+					"type": "text"
+				}
+			],
+			"dataMode": "params",
+			"name": "/login",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1411663087112,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"collectionId": "ca101120-9577-a7dd-0f69-2497c28312d6",
+			"synced": false
+		},
+		{
+			"id": "b6b86353-da65-def6-f21a-300491056348",
+			"headers": "",
+			"url": "localhost/modules",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "POST",
+			"data": [
+				{
+					"key": "login",
+					"value": "",
+					"type": "text"
+				},
+				{
+					"key": "password",
+					"value": "",
+					"type": "text"
+				}
+			],
+			"dataMode": "params",
+			"name": "/modules",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1411663514576,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"collectionId": "ca101120-9577-a7dd-0f69-2497c28312d6",
+			"synced": false
+		},
+		{
+			"id": "f01ccb42-94f4-5520-4aa8-f9644fb464bd",
+			"headers": "",
+			"url": "localhost/susie/unsubscribe",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "POST",
+			"data": [
+				{
+					"key": "login",
+					"value": "",
+					"type": "text"
+				},
+				{
+					"key": "password",
+					"value": "",
+					"type": "text"
+				},
+				{
+					"key": "id",
+					"value": "6301",
+					"type": "text"
+				}
+			],
+			"dataMode": "params",
+			"name": "/susie/unsubscribe",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1411663429447,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"collectionId": "ca101120-9577-a7dd-0f69-2497c28312d6",
+			"synced": false
+		},
+		{
+			"id": "f10fae0b-4261-3e48-a3ca-26e7fc3277ca",
+			"headers": "",
+			"url": "localhost/photo",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "POST",
+			"data": [
+				{
+					"key": "login",
+					"value": "",
+					"type": "text"
+				},
+				{
+					"key": "password",
+					"value": "",
+					"type": "text"
+				}
+			],
+			"dataMode": "params",
+			"name": "/photo",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1411663579754,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"collectionId": "ca101120-9577-a7dd-0f69-2497c28312d6",
+			"synced": false
+		},
+		{
+			"id": "f23e2d32-417d-87f7-17d9-5e221f88c4c7",
+			"headers": "",
+			"url": "localhost/susie/subscribe",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "POST",
+			"data": [
+				{
+					"key": "login",
+					"value": "",
+					"type": "text"
+				},
+				{
+					"key": "password",
+					"value": "",
+					"type": "text"
+				},
+				{
+					"key": "id",
+					"value": "6301",
+					"type": "text"
+				}
+			],
+			"dataMode": "params",
+			"name": "/susie/subscribe",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1411663419042,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"collectionId": "ca101120-9577-a7dd-0f69-2497c28312d6",
+			"synced": false
+		}
+	]
+}

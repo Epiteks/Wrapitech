@@ -1,0 +1,5 @@
+#!/bin/sh
+sudo pip3 install flask >> install.log;
+sudo pip3 install requests >> install.log;
+cat install.log;
+echo "Install done";

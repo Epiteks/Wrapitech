@@ -1,0 +1,1 @@
+web: python epitech_api_flask.py
