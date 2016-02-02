@@ -1,7 +1,3 @@
-before_script:
-  - apt-get update -qq && apt-get install -y -qq python3 python3-pip
-  - pip3 install -r requirements.txt
-
 job:
   script:
     - python3 epitech_api_flask.py
