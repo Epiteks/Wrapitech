@@ -1,0 +1,3 @@
+# job:
+#   script:
+#     - python3 epitech_api_flask.py > test
