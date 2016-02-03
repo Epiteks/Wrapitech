@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="80b8033c-4345-4768-9428-0c7b568b8194" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitlab-ci.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epitech_api_flask.py" afterPath="$PROJECT_DIR$/epitech_api_flask.py" />
-    </list>
+    <list default="true" id="80b8033c-4345-4768-9428-0c7b568b8194" name="Default" comment="" />
     <ignored path="EpitechAPI.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -508,12 +503,12 @@
       <created>1454501916014</created>
       <option name="number" value="Default" />
       <updated>1454501916014</updated>
-      <workItem from="1454501917958" duration="1064000" />
+      <workItem from="1454501917958" duration="1274000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1064000" />
+    <option name="totallyTimeSpent" value="1274000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
