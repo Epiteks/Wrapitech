@@ -281,6 +281,24 @@ def module():
     except Exception as e:
         return json.dumps({"error": {"message": "Server was unable to connect to Epitech's intra API", "code": 500}}), 500
 
+@app.route('/module/registered', methods=['GET'])
+def module_grades():
+    method = request.method
+    error, session, params = log_and_check_params(["token", "scolaryear", "codemodule", "codeinstance"], request)
+    if error != {}:
+        return json.dumps(error), error['error']['code']
+    try:
+        url = server_url+"/module/%s/%s/%s/registered?format=json" % (params['scolaryear'], params['codemodule'], params['codeinstance'])
+        r = session.post(url, verify=ssl_verify)
+        if r.status_code == 403:
+            if "// Epitech JSON webservice" in r.text:
+                return clean_json(r.text), 403
+            return json.dumps({"error": {"message": "Connection token is invalid or has expired", 'code':403}}), 403
+        return clean_json(r.text)
+    except Exception as e:
+        return json.dumps({"error": {"message": "Server was unable to connect to Epitech's intra API", "code": 500}}), 500
+
+
 @app.route('/marks', methods=['POST', 'GET'])
 def marks():
     """/marks (POST,GET) login, password"""
