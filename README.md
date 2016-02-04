@@ -1,39 +1,38 @@
 # Epitech JSON API
 
-**https://epitech-api.herokuapp.com/**
-[The API is available on GitHub](https://github.com/lupin012345/epitech-api-public)
+## Informations
 
-Every route returns **200** in case of success ,**40X** in case of client error and 5XX in case of server error.
-Every <font color="red">red</font> parameter is mandatory. The parameters mustn't be formated in JSON and must be in the query's body.
+URL : http://epitech.hug33k.fr/
+
+Every route returns __200__ in case of success, __40X__ in case of client error and __5XX__ in case of server error.
+Every __bold__ parameter is mandatory. The parameters mustn't be formated in JSON and must be in the query's body.
 The server always returns JSON responses.
 
-<font color="red">**Our google.group@epitech.eu mail address is not working anymore since the mail server's migration. Please mail me at api@lp1.eu if you have some questions.**</font>
+## Routes
 
-* * *
+### POST /login
 
-**Connect on the API and get a token**
-**/login POST**
+Connect on the API and get a token
 
-<pre>Parameters
-<font color="red">"login":"amsell_j",
-"password":"password42"</font>
-</pre>
+Parameters :
+* __"login":"amsell_j"__
+* __"password":"password42"__
 
-<pre>Response
-{"token":"42"}
-</pre>
+Response :
+````json
+{
+    "token":"42"
+}
+````
 
-* * *
+### POST /infos
 
-**Get informations displayed on login**
+Get informations displayed on login
+Parameters :
+* __"token":"42"__
 
-**/infos POST**
-
-<pre>Parameters
- <font color="red">"token":"42"</font>
-</pre>
-
-<pre>Response
+Response :
+````json
 {
 	"ip":"10.41.X.X",
 	"board":
@@ -118,21 +117,19 @@ The server always returns JSON responses.
 			"inprogress":39
 		}
 }
-</pre>
+````
 
-* * *
+### GET/planning
 
-**Planning**
+Planning
 
-**/planning GET**
+Parameters :
+* __"token":"42"__
+* __"start":"YYYY-MM-DD"__
+* __"end":"YYYY-MM-DD"__
 
-<pre>Parameters
-<font color="red">"token":"42",
-"start":"YYYY-MM-DD",
-"end":"YYYY-MM-DD"</font>
-</pre>
-
-<pre>Response
+Response :
+````json
 {
 	"prof_inst":
 		[
@@ -150,8 +147,8 @@ The server always returns JSON responses.
 		],
 	"title": null,
 	"rdv_indiv_registered": null,
-	"allowed_planning_end": "2013-12-15 00:00:00", "
-	nb_group": 6,
+	"allowed_planning_end": "2013-12-15 00:00:00",
+    "nb_group": 6,
 	"start": "2013-12-10 14:00:00",
 	"register_month": null,
 	"allowed_planning_start": "2013-12-09 00:00:00",
@@ -187,37 +184,32 @@ The server always returns JSON responses.
 	"module_available": false
 	},
 }
-</pre>
+````
 
-* * *
+### GET /susies
 
-**Susies**
+Susies
 
-**/susies GET**
+Parameters :
+* __"token":"42"__
+* __"start":"YYYY-MM-DD"__
+* __"end":"YYYY-MM-DD__
+* "get":"[all, free, registered]"
 
-<pre>Parameters
-<font color="red">"token":"42",
-"start":"YYYY-MM-DD",
-"end":"YYYY-MM-DD"</font>
-"get":"all" or "free" or "registered"
-</pre>
+Reponse :
+___See /planning___
 
-<pre>Reponse : see /planning
-</pre>
+### GET /susie
 
-* * *
+Get a susie
 
-**Get a susie**
+Parameters :
+* __"token":"42"__
+* __"id":6301__
+* __"calendar_id":42__
 
-**/susie GET**
-
-<pre>Parameters
-<font color="red">"token":"42",
-"id":6301,
-"calendar_id":42</font>
-</pre>
-
-<pre>Response
+Response :
+````json
 {
     "id": 6301,
     "id_calendar": 587,
@@ -266,42 +258,35 @@ The server always returns JSON responses.
         "title": "Prof Name"
     }
 }
-</pre>
+````
 
-* * *
+### POST /susie
 
-**Subscribe to a susie**
+Subscribe to a susie
 
-**/susie POST**
+Parameters :
+* __"token":"42"__
+* __"id":6301__
+* __"calendar_id":4__
 
-<pre>Parameters
-<font color="red">"token":"42",
-"id":6301,
-"calendar_id":42</font>
-</pre>
+### DELETE /susie
 
-* * *
+Unsuscribe to a susie
 
-**Unsuscribe to a susie**
+Parameters :
+* __"token":"42"__
+* __"id":6301__
+* __"calendar_id":42__
 
-**/susie DELETE**
+### GET /projects
 
-<pre>Parameters
-<font color="red">"token":"42",
-"id":6301,
-"calendar_id":42</font>
-</pre>
+Get projects
 
-* * *
+Parameters :
+* __"token":"42"__
 
-**Get projects**
-
-**/projects GET**
-
-<pre><font color="red">"token":"42",</font>
-</pre>
-
-<pre>Response
+Response :
+````json
 [
     {
         "codemodule": "B-GPR-560",
@@ -376,22 +361,21 @@ The server always returns JSON responses.
         "type_acti": "Suivis"
     }
 ]
-</pre>
+````
 
-* * *
+### GET /project
 
-**Get project**
+Get project
 
-**/project GET**
+Parameters :
+* __"token":"42"__
+* __"scolaryear":2014__
+* __"codemodule":"B-GPR-360-0"__
+* __"codeinstance":"PAR-6-1"__
+* __"codeacti":"acti-167486"__
 
-<pre><font color="red">"token":"42",
-"scolaryear":2014,
-"codemodule":"B-GPR-360-0",
-"codeinstance":"PAR-6-1",
-"codeacti":"acti-167486"</font>
-</pre>
-
-<pre>Response
+Response :
+````json
 {
    "scolaryear":"2014",
    "codemodule":"B-GPR-360-0",
@@ -454,23 +438,22 @@ The server always returns JSON responses.
    "urls":[
    ]
 }
-</pre>
+````
 
-* * *
+### POST /project
 
-**Suscribe to project**
+Suscribe to project
 
-**/project POST**
+Parameters :
+* __"token":"42"__
+* __"scolaryear":2014__
+* __"codemodule":"B-GPR-360-0"__
+* __"codeinstance":"PAR-6-1"__
+* __"codeacti":"acti-167486"__
 
-<pre><font color="red">"token":"42",
-"scolaryear":2014,
-"codemodule":"B-GPR-360-0",
-"codeinstance":"PAR-6-1",
-"codeacti":"acti-167486"</font>
-</pre>
-
-<pre>Response
- {
+Response :
+````json
+{
   "code":"2-Il-etait-une-fois-FR-0-1-amsell_j",
   "title":"2-Il \u00e9tait une fois... amsell_j",
   "url_repository":null,
@@ -484,41 +467,32 @@ The server always returns JSON responses.
     }
   ]
 }
-</pre>
+````
 
-* * *
+### DELETE /project
 
-**Unuscribe to project**pre><font
+Unuscribe to project
 
-**/project DELETE**
+Parameters :
+* __"token":"42"__
+* __"scolaryear":2014__
+* __"codemodule":"B-GPR-360-0"__
+* __"codeinstance":"PAR-6-1"__
+* __"codeacti":"acti-167486"__
 
-<pre>Parameters
-<font color="red">"token":"42",
-"scolaryear":2014,
-"codemodule":"B-GPR-360-0",
-"codeinstance":"PAR-6-1",
-"codeacti":"acti-167486"</font>
-</pre>
+### GET /project/files
 
-<pre>Response
-{
-}
-</pre>
+Get project files
 
-* * *
+Parameters :
+* __"token":"42"__
+* __"scolaryear":2014__
+* __"codemodule":"B-GPR-360-0"__
+* __"codeinstance":"PAR-6-1"__
+* __"codeacti":"acti-167486"__
 
-**Get project files**
-
-**/project/files GET**
-
-<pre><font color="red">"token":"42",
-"scolaryear":2014,
-"codemodule":"B-GPR-360-0",
-"codeinstance":"PAR-6-1",
-"codeacti":"acti-167486"</font>
-</pre>
-
-<pre>Response
+Response :
+````json
 {
 	[
 		{
@@ -543,19 +517,18 @@ The server always returns JSON responses.
 		}
 	]
 }
-</pre>
+````
 
-* * *
+### GET /modules
 
-**Get user's modules**
+Get user's modules
 
-**/modules GET**
+Parameters :
+* __"token":"42"__
+* "login":"amsell_j"
 
-<pre><font color="red">"token":"42",
-"login":"amsell_j" (Optional)</font>
-</pre>
-
-<pre>Response
+Response :
+````json
 {
    modules:[
       {
@@ -611,21 +584,22 @@ The server always returns JSON responses.
       }
    ]
 }
-</pre>
+````
 
 * * *
 
-**Get all modules**
+### GET /allmodules
 
-**/allmodules GET**
+Get all modules
 
-<pre><font color="red">"token":"42",
-"scolaryear":2014,
-"location":"FR/PAR" or another location in "FR/BDX","FR/LIL","FR/LYN","FR/MAR","FR/MPL","FR/NCY","FR/NAN","FR/NCE","FR/PAR","FR/REN","FR/STG","FR/TLS"
-"course":"bachelor/classic" or "bachelor/tek1ed" or "bachelor/tek2ed"</font>
-</pre>
+Parameters :
+* __"token":"42"__
+* __"scolaryear":2014__
+* __"location": "[FR/PAR, FR/BDX, FR/LIL, FR/LYN, FR/MAR, FR/MPL, FR/NCY, FR/NAN, FR/NCE, FR/PAR, FR/REN, FR/STG, FR/TLS]"__
+* __"course":"[bachelor/classic, bachelor/tek1ed, bachelor/tek2ed]"__
 
-<pre>Response
+Response :
+````json
 {
     "preload": [
         [
@@ -1796,21 +1770,20 @@ The server always returns JSON responses.
         }
     ]
 }
-</pre>
+````
 
-* * *
+### GET /module
 
-**Get module**
+Get module
 
-**/module GET**
+Parameters :
+* __"token":"42"__
+* __"scolaryear":2014__
+* __"codemodule":"B-GPR-360-0"__
+* __"codeinstance":"PAR-6-1"__
 
-<pre><font color="red">"token":"42",
-"scolaryear":2014,
-"codemodule":"B-GPR-360-0",
-"codeinstance":"PAR-6-1"</font>
-</pre>
-
-<pre>Response
+Response :
+````json
 {
     "scolaryear": "2014",
     "codemodule": "B-PAV-560",
@@ -1908,62 +1881,58 @@ The server always returns JSON responses.
           }
         ]
       }
+}
+````
 
-    </pre>
+### POST /module
 
-* * *
+Subscribe to module
 
-**Subscribe to module**
+Parameters :
+* __"token":"42"__
+* __"scolaryear":2014__
+* __"codemodule":"B-GPR-360-0"__
+* __"codeinstance":"PAR-6-1"__
 
-**/module POST**
-
-<pre><font color="red">"token":"42",
-"scolaryear":2014,
-"codemodule":"B-GPR-360-0",
-"codeinstance":"PAR-6-1"</font>
-</pre>
-
-<pre>Response
+Response :
+````json
 {
   "login":"amsell_j"
 }
-</pre>
+````
 
-* * *
+### DELETE /module
 
-**Unsubscribe to module**
+Unsubscribe to module
 
-**/module DELETE**
+Parameters :
+* __"token":"42"__
+* __"scolaryear":2014__
+* __"codemodule":"B-GPR-360-0"__
+* __"codeinstance":"PAR-6-1"__
 
-<pre><font color="red">"token":"42",
-"scolaryear":2014,
-"codemodule":"B-GPR-360-0",
-"codeinstance":"PAR-6-1"</font>
-</pre>
-
-<pre>Response
+Response :
+````json
 {
   "login":"amsell_j"
 }
-</pre>
+````
 
-* * *
+### GET /event
 
-**Get event**
+Get event
 
-**/event GET**
+Parameters :
+* __"token":"42"__
+* __"scolaryear":2014__
+* __"codemodule":"B-PAV-590"__
+* __"codeinstance":"NAN-5-1"__
+* __"codeacti":"acti-164603"__
+* __"codeevent":"event-173408"__
 
-<pre>Parameters
-<font color="red">"token":"42",
-"scolaryear":2014,
-"codemodule":"B-PAV-590",
-"codeinstance":"NAN-5-1",
-"codeacti":"acti-164603"
-"codeevent":"event-173408"</font>
-</pre>
-
-<pre>  Response
-  {
+Response :
+````json
+{
   "scolaryear":"2014",
   "codemodule":"B-PRO-460",
   "codeinstance":"PAR-5-1",
@@ -1999,57 +1968,54 @@ The server always returns JSON responses.
   Piscine \/ a rush.",
   "name_bocal":"tp-PRO 2015-01-06 15:30:00-Paris"
 }
+````
 
-</pre>
+### POST /event
 
+Subscribe to event
+
+Parameters :
+* __"token":"42"__
+* __"scolaryear":2014__
+* __"codemodule":"B-PAV-590"__
+* __"codeinstance":"NAN-5-1"__
+* __"codeacti":"acti-164603"__
+* __"codeevent":"event-173408"__
+
+Response :
+````json
+{
+}
+````
 * * *
 
-**Subscribe to event**
+### DELETE /event
 
-**/event POST**
+Unsubscribe to event
 
-<pre><font color="red">"token":"42",
-"scolaryear":2014,
-"codemodule":"B-PAV-590",
-"codeinstance":"NAN-5-1",
-"codeacti":"acti-164603"
-"codeevent":"event-173408"</font>
-</pre>
+Parameters :
+* __"token":"42"__
+* __"scolaryear":2014__
+* __"codemodule":"B-PAV-590"__
+* __"codeinstance":"NAN-5-1"__
+* __"codeacti":"acti-164603"__
+* __"codeevent":"event-173408"__
 
-<pre>  Response
-  {
-  }
-</pre>
+Response :
+````json
+{
+}
+````
 
-* * *
+### GET /marks
 
-**Unsubscribe to event**
+Get marks
 
-**/event DELETE**
+Parameters :
+* __"token":"42"
 
-<pre><font color="red">"token":"42",
-"scolaryear":2014,
-"codemodule":"B-PAV-590",
-"codeinstance":"NAN-5-1",
-"codeacti":"acti-164603"
-"codeevent":"event-173408"</font>
-</pre>
-
-<pre>  Response
-  {
-  }
-</pre>
-
-* * *
-
-**Get marks**
-
-**/marks GET**
-
-<pre><font color="red">"token":"42",</font>
-</pre>
-
-<pre>Response
+Response :
+````json
 {
    notes:[
       {
@@ -2090,18 +2056,17 @@ The server always returns JSON responses.
       },
    ]
 }
-</pre>
+````
 
-* * *
+### GET /messages
 
-**Get messages**
+Get messages
 
-**/messages GET**
+Parameters :
+* __"token":"42"__
 
-<pre><font color="red">"token":"42",</font>
-</pre>
-
-<pre>Response
+Response :
+````json
 [
     {
         "title": "Mark added for activity Soutenance intermediaire du projet UML : diagramme de classes, interfaces et diagrammes de séquence. (Soutenance) by Teacher Name.",
@@ -2114,71 +2079,65 @@ The server always returns JSON responses.
         "date": "2014-11-29 01:39:35"
     }
 ]
-</pre>
+````
 
-* * *
+### GET /alerts
 
-**Get alerts**
+Get alerts
 
-**/alerts GET**
+Parameters :
+* __"token":"42"
 
-<pre><font color="red">"token":"42",</font>
-</pre>
-
-<pre>Response
+Response :
+````json
 [
 	{
 		"title":"Your login time is insufficient (3)."
 	}
 ]
-</pre>
+````
 
-* * *
+### GET /photo
 
-**Get photo url**
+Get photo url
 
-**/photo GET**
+Parameters :
+* __"token":"42"__
+* __"login":"login_x"__
 
-<pre><font color="red">"token":"42",
-"login":"login_x"</font>
-</pre>
-
-<pre>Response
+Response :
+````json
 {
 	"url": "https://cdn.local.epitech.eu/userprofil/profilview/amsell_j.jpg"
 }
-</pre>
+````
 
-* * *
+### POST /token
 
-**Validate token**
+Validate token
 
-**/token POST**
+* __"token":"42"__
+* __"scolaryear":2014__
+* __"codemodule":"B-GPR-360-0"__
+* __"codeinstance":"PAR-6-1"__
+* __"codeacti":"acti-167486"__
+* __"codeevent":"event-177013"__
+* __"tokenvalidationcode":"00000000"__
 
-<pre> <font color="red">"token":"42",
-"scolaryear":2014,
-"codemodule":"B-GPR-360-0",
-"codeinstance":"PAR-6-1",
-"codeacti":"acti-167486",
-"codeevent":"event-177013"
-"tokenvalidationcode":"00000000"</font>
-</pre>
+### GET /trombi
 
-* * *
+Get a list of students
 
-**Get a list of students**
+Parameters :
+* __"token":"42"__
+* __"year":2014__
+* __"location":"[FR/PAR, FR/BDX, FR/LIL, FR/LYN, FR/MAR, FR/MPL, FR/NCY, FR/NAN, FR/NCE, FR/PAR, FR/REN, FR/STG, FR/TLS]"__
+* "course":"[bachelor/classic, bachelor/tek1ed, bachelor/tek2ed]"
+* "promo":"tek3"
+* "offset":43
 
-**/trombi GET**
-
-<pre><font color="red">"token":"42",
-"year":2014,
-"location":"FR/PAR" or another location in "FR/BDX","FR/LIL","FR/LYN","FR/MAR","FR/MPL","FR/NCY","FR/NAN","FR/NCE","FR/PAR","FR/REN","FR/STG","FR/TLS"</font>
-"course":"bachelor/classic" or "bachelor/tek1ed" or "bachelor/tek2ed"
-"promo":"tek3"
-"offset":43
-</pre>
-
-<pre>Response
+Response :
+````json
 {
     "items": [
         {
@@ -2189,20 +2148,20 @@ The server always returns JSON responses.
             "picture": "https://cdn.local.epitech.eu/userprofil/trombiview/firstn_l.jpg",
             "location": "FR/PAR"
         },
-    }
-</pre>
+    ]
+}
+````
 
-* * *
+## GET /user
 
-**Get a student's information**
+Get a student's information
 
-**/user GET**
+Parameters :
+* __"token":"42"__
+* __"user":"login_x"__
 
-<pre><font color="red">"token":"42",
-"user":"login_x"</font>
-</pre>
-
-<pre>Response
+Response :
+````json
 {
     "login": "amsell_j",
     "title": "Jeremie Amsellem",
@@ -2288,19 +2247,19 @@ The server always returns JSON responses.
         "out_idle": 0,
         "nslog_norm": 25
     }
-</pre>
+}
+````
 
-* * *
+## GET /user/files
 
-**Get a student's documents**
+Get a student's documents
 
-**/user/files GET**
+Parameters :
+* __"token":"42"__
+* __"user":"login_x"__
 
-<pre><font color="red">"token":"42",
-"user":"login_x"</font>
-</pre>
-
-<pre>Response
+Response
+````json
 [
     {
         "type": "-",
@@ -2423,6 +2382,4 @@ The server always returns JSON responses.
         "fullpath": "\/user\/junger_m\/document\/Convention-Stage-junger_m-FR-tech_1.pdf"
     }
 ]
-</pre>
-
-</pre>
+````
