@@ -1,6 +1,0 @@
-INFO:werkzeug: * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
-INFO:werkzeug: * Restarting with stat
-WARNING:werkzeug: * Debugger is active!
-INFO:werkzeug: * Debugger pin code: 538-482-739
-INFO:requests.packages.urllib3.connectionpool:Starting new HTTPS connection (1): intra.epitech.eu
-INFO:werkzeug:127.0.0.1 - - [02/Feb/2016 15:04:01] "GET /project/marks?token=2bio67sbvq4nnhsri5a3hr7p91&scolaryear=2015&codemodule=B-CSI-450&codeinstance=STG-5-1&codeacti=acti-186380 HTTP/1.1" 200 -
