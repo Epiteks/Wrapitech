@@ -1,3 +1,0 @@
-#!/bin/sh
-sudo apt-get install python3-pip;
-sh install_modules;

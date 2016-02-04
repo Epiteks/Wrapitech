@@ -67,3 +67,10 @@ target/
 
 #OSX
 __MACOSX/
+
+#API
+api.log
+
+#Dev
+*.iml
+.idea/

@@ -1,3 +1,0 @@
-#!/bin/sh
-yaourt -S python-pip >> install.log;
-sh install_modules;

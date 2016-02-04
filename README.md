@@ -1,22 +1,22 @@
 # Epitech JSON API
 
-**https://epitech-api.herokuapp.com/**  
-[The API is available on GitHub](https://github.com/lupin012345/epitech-api-public)  
+**https://epitech-api.herokuapp.com/**
+[The API is available on GitHub](https://github.com/lupin012345/epitech-api-public)
 
-Every route returns **200** in case of success ,**40X** in case of client error and 5XX in case of server error.  
-Every <font color="red">red</font> parameter is mandatory. The parameters mustn't be formated in JSON and must be in the query's body.  
-The server always returns JSON responses.  
+Every route returns **200** in case of success ,**40X** in case of client error and 5XX in case of server error.
+Every <font color="red">red</font> parameter is mandatory. The parameters mustn't be formated in JSON and must be in the query's body.
+The server always returns JSON responses.
 
-<font color="red">**Our google.group@epitech.eu mail address is not working anymore since the mail server's migration. Please mail me at api@lp1.eu if you have some questions.**</font>  
+<font color="red">**Our google.group@epitech.eu mail address is not working anymore since the mail server's migration. Please mail me at api@lp1.eu if you have some questions.**</font>
 
 * * *
 
-**Connect on the API and get a token**  
-**/login POST**  
+**Connect on the API and get a token**
+**/login POST**
 
 <pre>Parameters
 <font color="red">"login":"amsell_j",
-"password":"password42"</font> 
+"password":"password42"</font>
 </pre>
 
 <pre>Response
@@ -30,7 +30,7 @@ The server always returns JSON responses.
 **/infos POST**
 
 <pre>Parameters
- <font color="red">"token":"42"</font> 
+ <font color="red">"token":"42"</font>
 </pre>
 
 <pre>Response
@@ -51,72 +51,72 @@ The server always returns JSON responses.
 			{
 				"title":"You have joined the activity Corrections Evaluation - M\u00e9mo professionnel<\/a>"
 				"user":
-					{ 
-						"picture":"https:\/\/cdn.local.epitech.eu\/userprofil\/amsell_j.bmp", 
-						"title":"Jeremie Amsellem", 
-						"url":"\/user\/amsell_j\/" 
-					}, 
-				"content":"Remember to validate your presence with your token View other registered people ...<\/a>", "date":"2014-11-23 18:24:42", 
-				"id":"6557808", 
-				"visible":"1", 
-				"id_activite":"173479", 
+					{
+						"picture":"https:\/\/cdn.local.epitech.eu\/userprofil\/amsell_j.bmp",
+						"title":"Jeremie Amsellem",
+						"url":"\/user\/amsell_j\/"
+					},
+				"content":"Remember to validate your presence with your token View other registered people ...<\/a>", "date":"2014-11-23 18:24:42",
+				"id":"6557808",
+				"visible":"1",
+				"id_activite":"173479",
 				"class":"register"
 			}
 		}
 		"infos":
-			{ 
-				"id":"42891", 
-				"login":"amsell_j", 
-				"title":"Jeremie Amsellem", 
-				"email":null, "internal_email":"amsell_j@epitech.eu", 
-				"lastname":"Amsellem", 
-				"firstname":"Jeremie", 
+			{
+				"id":"42891",
+				"login":"amsell_j",
+				"title":"Jeremie Amsellem",
+				"email":null, "internal_email":"amsell_j@epitech.eu",
+				"lastname":"Amsellem",
+				"firstname":"Jeremie",
 				"userinfo":{}
-				"referent_used":true, 
-				"picture":"amsell_j.bmp", 
-				"picture_fun":null, 
-				"email_referent":"email@email.com", 
-				"pass_referent":"0000", 
-				"promo":2017, 
-				"semester":5, 
-				"uid":110268, 
-				"gid":32017, 
-				"location":"FR\/PAR", 
-				"documents":"vrac\/amsell_j", 
-				"userdocs":"\/u\/epitech_2017\/amsell_j\/cu", 
-				"shell":"\/usr\/site\/bin\/shell", 
-				"netsoul":null, 
-				"close":false, 
-				"close_reason":null, 
-				"ctime":"2013-12-06 04:00:56", 
-				"mtime":"2013-11-22 18:00:05", 
-				"comment":null, 
-				"id_promo":"279", 
-				"id_history":"144269", 
-				"course_code":"bachelor\/classic", 
-				"school_code":"epitech", 
-				"school_title":"epitech", 
-				"old_id_promo":"244,250,255,254,272", 
-				"old_id_location":"4", 
-				"rights":{ }, 
-				"invited":true, 
-				"studentyear":3, 
+				"referent_used":true,
+				"picture":"amsell_j.bmp",
+				"picture_fun":null,
+				"email_referent":"email@email.com",
+				"pass_referent":"0000",
+				"promo":2017,
+				"semester":5,
+				"uid":110268,
+				"gid":32017,
+				"location":"FR\/PAR",
+				"documents":"vrac\/amsell_j",
+				"userdocs":"\/u\/epitech_2017\/amsell_j\/cu",
+				"shell":"\/usr\/site\/bin\/shell",
+				"netsoul":null,
+				"close":false,
+				"close_reason":null,
+				"ctime":"2013-12-06 04:00:56",
+				"mtime":"2013-11-22 18:00:05",
+				"comment":null,
+				"id_promo":"279",
+				"id_history":"144269",
+				"course_code":"bachelor\/classic",
+				"school_code":"epitech",
+				"school_title":"epitech",
+				"old_id_promo":"244,250,255,254,272",
+				"old_id_location":"4",
+				"rights":{ },
+				"invited":true,
+				"studentyear":3,
 				"admin":false,
 		}
 		"current":
-		{ 
-			"active_log":"0.9069", 
-			"credits_min":"120", 
-			"credits_norm":"120", 
-			"credits_obj":"150", 
-			"nslog_min":"15", 
-			"nslog_norm":"25", 
-			"semester_code":"B5", 
-			"semester_num":"5", 
-			"achieved":124, 
-			"failed":63, 
-			"inprogress":39 
-		} 
+		{
+			"active_log":"0.9069",
+			"credits_min":"120",
+			"credits_norm":"120",
+			"credits_obj":"150",
+			"nslog_min":"15",
+			"nslog_norm":"25",
+			"semester_code":"B5",
+			"semester_num":"5",
+			"achieved":124,
+			"failed":63,
+			"inprogress":39
+		}
 }
 </pre>
 
@@ -129,7 +129,7 @@ The server always returns JSON responses.
 <pre>Parameters
 <font color="red">"token":"42",
 "start":"YYYY-MM-DD",
-"end":"YYYY-MM-DD"</font> 
+"end":"YYYY-MM-DD"</font>
 </pre>
 
 <pre>Response
@@ -137,55 +137,55 @@ The server always returns JSON responses.
 	"prof_inst":
 		[
 			{
-				"type": "user", 
-				"login": "login_x", 
-				"title": "FirstName LastName", 
+				"type": "user",
+				"login": "login_x",
+				"title": "FirstName LastName",
 				"picture": "https://cdn.local.epitech.eu/userprofil/login_x.bmp"
-			}, 
+			},
 			{
-				"type": "user", 
-				"login": "prof_a", 
+				"type": "user",
+				"login": "prof_a",
 				"title": "Prof Name"
 			}
-		], 
-	"title": null, 
-	"rdv_indiv_registered": null, 
+		],
+	"title": null,
+	"rdv_indiv_registered": null,
 	"allowed_planning_end": "2013-12-15 00:00:00", "
-	nb_group": 6, 
-	"start": "2013-12-10 14:00:00", 
-	"register_month": null, 
-	"allowed_planning_start": "2013-12-09 00:00:00", 
-	"project": false, 
-	"event_registered": null, 
-	"total_students_registered": 22, 
-	"allow_register": false, 
-	"codemodule": "B-PRO-050", 
-	"rdv_group_registered": null, 
-	"semester": 1, 
-	"type_code": "tp", 
-	"is_rdv": "0", 
-	"allow_token": false, 
-	"titlemodule": "B1 - French Writing Skills", 
-	"in_more_than_one_month": true, 
-	"acti_title": "R\u00e9diger une lettre pro convaincante (Partie 2)", 
-	"instance_location": "FR/PAR", 
-	"nb_hours": "01:30:00", 
-	"register_prof": null, 
-	"nb_max_students_projet": null, 
-	"room": {"type": "salle_machine", "seats": 50, "code": "FR/PAR/Voltaire/SM-21"}, 
-	"codeacti": "acti-133142", 
-	"codeevent": "event-140648", 
-	"codeinstance": "PAR-1-1", 
-	"dates": null, 
-	"register_student": true, 
-	"type_title": "TD", 
-	"num_event": 3, 
-	"end": "2013-12-10 15:30:00", 
-	"scolaryear": "2013", 
-	"module_registered": false, 
-	"past": true, 
+	nb_group": 6,
+	"start": "2013-12-10 14:00:00",
+	"register_month": null,
+	"allowed_planning_start": "2013-12-09 00:00:00",
+	"project": false,
+	"event_registered": null,
+	"total_students_registered": 22,
+	"allow_register": false,
+	"codemodule": "B-PRO-050",
+	"rdv_group_registered": null,
+	"semester": 1,
+	"type_code": "tp",
+	"is_rdv": "0",
+	"allow_token": false,
+	"titlemodule": "B1 - French Writing Skills",
+	"in_more_than_one_month": true,
+	"acti_title": "R\u00e9diger une lettre pro convaincante (Partie 2)",
+	"instance_location": "FR/PAR",
+	"nb_hours": "01:30:00",
+	"register_prof": null,
+	"nb_max_students_projet": null,
+	"room": {"type": "salle_machine", "seats": 50, "code": "FR/PAR/Voltaire/SM-21"},
+	"codeacti": "acti-133142",
+	"codeevent": "event-140648",
+	"codeinstance": "PAR-1-1",
+	"dates": null,
+	"register_student": true,
+	"type_title": "TD",
+	"num_event": 3,
+	"end": "2013-12-10 15:30:00",
+	"scolaryear": "2013",
+	"module_registered": false,
+	"past": true,
 	"module_available": false
-	}, 
+	},
 }
 </pre>
 
@@ -196,9 +196,9 @@ The server always returns JSON responses.
 **/susies GET**
 
 <pre>Parameters
-<font color="red">"token":"42",        
+<font color="red">"token":"42",
 "start":"YYYY-MM-DD",
-"end":"YYYY-MM-DD"</font> 
+"end":"YYYY-MM-DD"</font>
 "get":"all" or "free" or "registered"
 </pre>
 
@@ -214,7 +214,7 @@ The server always returns JSON responses.
 <pre>Parameters
 <font color="red">"token":"42",
 "id":6301,
-"calendar_id":42</font> 
+"calendar_id":42</font>
 </pre>
 
 <pre>Response
@@ -277,7 +277,7 @@ The server always returns JSON responses.
 <pre>Parameters
 <font color="red">"token":"42",
 "id":6301,
-"calendar_id":42</font> 
+"calendar_id":42</font>
 </pre>
 
 * * *
@@ -289,7 +289,7 @@ The server always returns JSON responses.
 <pre>Parameters
 <font color="red">"token":"42",
 "id":6301,
-"calendar_id":42</font> 
+"calendar_id":42</font>
 </pre>
 
 * * *
@@ -298,7 +298,7 @@ The server always returns JSON responses.
 
 **/projects GET**
 
-<pre><font color="red">"token":"42",</font> 
+<pre><font color="red">"token":"42",</font>
 </pre>
 
 <pre>Response
@@ -384,11 +384,11 @@ The server always returns JSON responses.
 
 **/project GET**
 
-<pre><font color="red">"token":"42",  
+<pre><font color="red">"token":"42",
 "scolaryear":2014,
 "codemodule":"B-GPR-360-0",
 "codeinstance":"PAR-6-1",
-"codeacti":"acti-167486"</font> 
+"codeacti":"acti-167486"</font>
 </pre>
 
 <pre>Response
@@ -462,11 +462,11 @@ The server always returns JSON responses.
 
 **/project POST**
 
-<pre><font color="red">"token":"42",  
+<pre><font color="red">"token":"42",
 "scolaryear":2014,
 "codemodule":"B-GPR-360-0",
 "codeinstance":"PAR-6-1",
-"codeacti":"acti-167486"</font> 
+"codeacti":"acti-167486"</font>
 </pre>
 
 <pre>Response
@@ -493,11 +493,11 @@ The server always returns JSON responses.
 **/project DELETE**
 
 <pre>Parameters
-<font color="red">"token":"42",    
+<font color="red">"token":"42",
 "scolaryear":2014,
 "codemodule":"B-GPR-360-0",
 "codeinstance":"PAR-6-1",
-"codeacti":"acti-167486"</font> 
+"codeacti":"acti-167486"</font>
 </pre>
 
 <pre>Response
@@ -511,11 +511,11 @@ The server always returns JSON responses.
 
 **/project/files GET**
 
-<pre><font color="red">"token":"42",      
+<pre><font color="red">"token":"42",
 "scolaryear":2014,
 "codemodule":"B-GPR-360-0",
 "codeinstance":"PAR-6-1",
-"codeacti":"acti-167486"</font> 
+"codeacti":"acti-167486"</font>
 </pre>
 
 <pre>Response
@@ -551,8 +551,8 @@ The server always returns JSON responses.
 
 **/modules GET**
 
-<pre><font color="red">"token":"42",      
-"login":"amsell_j" (Optional)</font> 
+<pre><font color="red">"token":"42",
+"login":"amsell_j" (Optional)</font>
 </pre>
 
 <pre>Response
@@ -619,10 +619,10 @@ The server always returns JSON responses.
 
 **/allmodules GET**
 
-<pre><font color="red">"token":"42",      
+<pre><font color="red">"token":"42",
 "scolaryear":2014,
 "location":"FR/PAR" or another location in "FR/BDX","FR/LIL","FR/LYN","FR/MAR","FR/MPL","FR/NCY","FR/NAN","FR/NCE","FR/PAR","FR/REN","FR/STG","FR/TLS"
-"course":"bachelor/classic" or "bachelor/tek1ed" or "bachelor/tek2ed"</font> 
+"course":"bachelor/classic" or "bachelor/tek1ed" or "bachelor/tek2ed"</font>
 </pre>
 
 <pre>Response
@@ -1804,10 +1804,10 @@ The server always returns JSON responses.
 
 **/module GET**
 
-<pre><font color="red">"token":"42",        
+<pre><font color="red">"token":"42",
 "scolaryear":2014,
 "codemodule":"B-GPR-360-0",
-"codeinstance":"PAR-6-1"</font> 
+"codeinstance":"PAR-6-1"</font>
 </pre>
 
 <pre>Response
@@ -1865,7 +1865,7 @@ The server always returns JSON responses.
     "color": null,
     "student_flags": null,
     "current_resp": false,
-    "activites": 
+    "activites":
     [
         {
             "codeacti": "acti-164635",
@@ -1917,10 +1917,10 @@ The server always returns JSON responses.
 
 **/module POST**
 
-<pre><font color="red">"token":"42",        
+<pre><font color="red">"token":"42",
 "scolaryear":2014,
 "codemodule":"B-GPR-360-0",
-"codeinstance":"PAR-6-1"</font> 
+"codeinstance":"PAR-6-1"</font>
 </pre>
 
 <pre>Response
@@ -1935,10 +1935,10 @@ The server always returns JSON responses.
 
 **/module DELETE**
 
-<pre><font color="red">"token":"42",        
+<pre><font color="red">"token":"42",
 "scolaryear":2014,
 "codemodule":"B-GPR-360-0",
-"codeinstance":"PAR-6-1"</font> 
+"codeinstance":"PAR-6-1"</font>
 </pre>
 
 <pre>Response
@@ -1959,7 +1959,7 @@ The server always returns JSON responses.
 "codemodule":"B-PAV-590",
 "codeinstance":"NAN-5-1",
 "codeacti":"acti-164603"
-"codeevent":"event-173408"</font> 
+"codeevent":"event-173408"</font>
 </pre>
 
 <pre>  Response
@@ -1995,7 +1995,7 @@ The server always returns JSON responses.
     "seats":180
   },
   "seats":130,
-  "desc_webservice":"The information which you require to create an exam \/ a day of 
+  "desc_webservice":"The information which you require to create an exam \/ a day of
   Piscine \/ a rush.",
   "name_bocal":"tp-PRO 2015-01-06 15:30:00-Paris"
 }
@@ -2013,7 +2013,7 @@ The server always returns JSON responses.
 "codemodule":"B-PAV-590",
 "codeinstance":"NAN-5-1",
 "codeacti":"acti-164603"
-"codeevent":"event-173408"</font> 
+"codeevent":"event-173408"</font>
 </pre>
 
 <pre>  Response
@@ -2032,7 +2032,7 @@ The server always returns JSON responses.
 "codemodule":"B-PAV-590",
 "codeinstance":"NAN-5-1",
 "codeacti":"acti-164603"
-"codeevent":"event-173408"</font> 
+"codeevent":"event-173408"</font>
 </pre>
 
 <pre>  Response
@@ -2046,7 +2046,7 @@ The server always returns JSON responses.
 
 **/marks GET**
 
-<pre><font color="red">"token":"42",</font> 
+<pre><font color="red">"token":"42",</font>
 </pre>
 
 <pre>Response
@@ -2098,7 +2098,7 @@ The server always returns JSON responses.
 
 **/messages GET**
 
-<pre><font color="red">"token":"42",</font> 
+<pre><font color="red">"token":"42",</font>
 </pre>
 
 <pre>Response
@@ -2122,14 +2122,14 @@ The server always returns JSON responses.
 
 **/alerts GET**
 
-<pre><font color="red">"token":"42",</font> 
+<pre><font color="red">"token":"42",</font>
 </pre>
 
 <pre>Response
-[ 
-	{ 
-		"title":"Your login time is insufficient (3)." 
-	} 
+[
+	{
+		"title":"Your login time is insufficient (3)."
+	}
 ]
 </pre>
 
@@ -2140,7 +2140,7 @@ The server always returns JSON responses.
 **/photo GET**
 
 <pre><font color="red">"token":"42",
-"login":"login_x"</font> 
+"login":"login_x"</font>
 </pre>
 
 <pre>Response
@@ -2155,13 +2155,13 @@ The server always returns JSON responses.
 
 **/token POST**
 
-<pre> <font color="red">"token":"42",        
+<pre> <font color="red">"token":"42",
 "scolaryear":2014,
 "codemodule":"B-GPR-360-0",
 "codeinstance":"PAR-6-1",
 "codeacti":"acti-167486",
 "codeevent":"event-177013"
-"tokenvalidationcode":"00000000"</font> 
+"tokenvalidationcode":"00000000"</font>
 </pre>
 
 * * *
@@ -2170,9 +2170,9 @@ The server always returns JSON responses.
 
 **/trombi GET**
 
-<pre><font color="red">"token":"42",        
+<pre><font color="red">"token":"42",
 "year":2014,
-"location":"FR/PAR" or another location in "FR/BDX","FR/LIL","FR/LYN","FR/MAR","FR/MPL","FR/NCY","FR/NAN","FR/NCE","FR/PAR","FR/REN","FR/STG","FR/TLS"</font> 
+"location":"FR/PAR" or another location in "FR/BDX","FR/LIL","FR/LYN","FR/MAR","FR/MPL","FR/NCY","FR/NAN","FR/NCE","FR/PAR","FR/REN","FR/STG","FR/TLS"</font>
 "course":"bachelor/classic" or "bachelor/tek1ed" or "bachelor/tek2ed"
 "promo":"tek3"
 "offset":43
@@ -2199,7 +2199,7 @@ The server always returns JSON responses.
 **/user GET**
 
 <pre><font color="red">"token":"42",
-"user":"login_x"</font> 
+"user":"login_x"</font>
 </pre>
 
 <pre>Response
@@ -2297,7 +2297,7 @@ The server always returns JSON responses.
 **/user/files GET**
 
 <pre><font color="red">"token":"42",
-"user":"login_x"</font> 
+"user":"login_x"</font>
 </pre>
 
 <pre>Response
