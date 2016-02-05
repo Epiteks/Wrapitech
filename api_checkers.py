@@ -1,4 +1,4 @@
-from api_parser import clean_json, get_parameters, log_file
+from api_parser import clean_json, log_file
 from api_conf import ssl_verify
 import requests
 import json
@@ -16,7 +16,7 @@ def log_user_with_login(params, session):
         r = session.post('https://intra.epitech.eu/?format=json', data=payload, verify=ssl_verify)
         log_file("Intra logged user %s in %s seconds" %(params['login'], r.elapsed))
         return (check_login(clean_json(r.text)))
-    except Exception as e:
+    except:
         return json.dumps({"error": {"message": "Network error , the server couldn't reach Epitech's API", "code": 500}})
 
 def log_and_check_params(mandatory_params, request):

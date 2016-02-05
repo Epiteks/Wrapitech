@@ -15,10 +15,8 @@ def epur(json_raw):
 def get_classes_by_calendar_type(planning, type):
     output = []
     for item in planning:
-        if hasattr(item, "keys"):
-            if "calendar_type" in item.keys():
-                if item['calendar_type'] == type:
-                    output.append(item)
+        if hasattr(item, "keys") and "calendar_type" in item.keys() and item['calendar_type'] == type:
+            output.append(item)
     return output
 
 def get_classes_by_status(planning, status):
@@ -27,8 +25,6 @@ def get_classes_by_status(planning, status):
         return planning
     output = planning
     for _filter in filters:
-        if _filter not in ["registered", "free"]:
-            return {"error":{"message":"Invalid filter : %s" % _filter, "code":400}}
         if _filter == "registered":
             output = [item for item in output if "event_registered" in item.keys() \
             and item['event_registered'] is not None \
@@ -38,6 +34,8 @@ def get_classes_by_status(planning, status):
             and item["room"] is not None and "seats" in item["room"].keys() \
             and "total_students_registered" in item.keys() \
             and item["room"]["seats"] > item["total_students_registered"]]
+        else:
+            return {"error":{"message":"Invalid filter : %s" % _filter, "code":400}}
     return output
 
 def filter_projects(planning, filters):
@@ -56,15 +54,9 @@ def get_parameters(method, request):
     if method == 'POST':
         return request.form
     elif method == 'GET':
-        if (len(request.args) == 0):
-            return request.form
-        else:
-            return request.args
+        return request.form if (len(request.args) == 0) else request.args
     else:
-        if (len(request.args) == 0):
-            return request.form
-        else:
-            return request.args
+        return request.form if (len(request.args) == 0) else request.args
 
 def get_marks(html_raw):
     pos = html_raw.find('notes: [')
