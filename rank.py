@@ -64,7 +64,6 @@ def	getIntraUsers(token, year):
 
 def cleanList(users):
 	res = []
-	index = 0
 	for user in users:
 		try:
 			intraData = getUser(token, user)
@@ -73,9 +72,6 @@ def cleanList(users):
 				res.append(intraData)
 		except:
 			pass
-		index += 1
-		if not (index % 10):
-			print("{0} done".format(index))
 	return res
 
 def	getGPA(users):
