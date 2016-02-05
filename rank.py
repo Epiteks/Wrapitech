@@ -88,8 +88,8 @@ def	getGPA(users):
 	return allUsers
 
 def save(users, year):
-	name = "rank{0}.json".format(year)
-	with open(name, "w") as dataFile:
+	name = "../rank{0}.json".format(year)
+	with open(name, "w+") as dataFile:
 		dataFile.write(json.dumps(users))
 
 if __name__ == '__main__':
