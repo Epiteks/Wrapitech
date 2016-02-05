@@ -5,7 +5,7 @@ import json
 import time
 import urllib2
 
-debug = True
+debug = False
 url = "http://epitech.hug33k.fr"
 
 def	getUser(token, login):
