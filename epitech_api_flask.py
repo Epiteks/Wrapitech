@@ -18,7 +18,7 @@ def doc():
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     error, session, params = log_and_check_params(["login", "password"], request)
-    return json.dumps(error), error['error']['code'] if error != {} else json.dumps({"token": session.cookies['PHPSESSID']})
+    return (json.dumps(error), error['error']['code']) if error != {} else json.dumps({"token": session.cookies['PHPSESSID']})
 
 @app.route('/infos', methods=['POST', 'GET'])
 def infos():
