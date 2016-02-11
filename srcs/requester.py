@@ -1,3 +1,4 @@
+from flask import Response
 import json
 import requests
 
@@ -32,3 +33,10 @@ class	Request(object):
 
 	def	getError(self):
 		return {"code": self._request.status_code, "data": self._request.json()}
+
+def executeRequest(req):
+	status = req.execute()
+	return req.parse() if status else req.getError()
+
+def response(res, code):
+	return Response(response=json.dumps(res), mimetype="application/json", status=code)
