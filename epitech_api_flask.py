@@ -285,7 +285,10 @@ def marks():
     if error != {}:
         return json.dumps(error), error['error']['code']
     try:
-        r = session.post(server_url + "/user/#!/netsoul", verify=ssl_verify)
+        if 'login' in params:
+            r = session.post(server_url + "/user/%s/#!/notes" % params['login'], verify=ssl_verify)
+        else:
+            r = session.post(server_url + "/user/#!/netsoul", verify=ssl_verify)
         if r.status_code == 403:
             return json.dumps({"error": {"message": "Connection token is invalid or has expired", 'code': 403}}), 403
         return get_marks(r.text)
