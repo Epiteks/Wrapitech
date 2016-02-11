@@ -10,7 +10,6 @@ import logging
 app = Flask(__name__)
 logging.basicConfig(filename=".api.log", level=logging.INFO)
 
-
 @app.route('/', methods=['POST', 'GET'])
 def doc():
     return render_template("api_epitech.html")
