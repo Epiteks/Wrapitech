@@ -393,9 +393,25 @@ def event_registered():
     if error != {}:
         return json.dumps(error), error['error']['code']
     try:
-        print("lolilol")
         url = server_url + "/module/%s/%s/%s/%s/%s/registered?format=json" % (params['scolaryear'], params['codemodule'], params['codeinstance'], params['codeacti'], params['codeevent'])
-        print(url)
+        r = session.get(url, verify=ssl_verify)
+
+        if r.status_code == 403:
+            if "// Epitech JSON webservice" in r.text:
+                return clean_json(r.text), 403
+            return json.dumps({"error": {"message": "Connection token is invalid or has expired", 'code': 403}}), 403
+        return clean_json(r.text)
+    except:
+        return json.dumps(
+                {"error": {"message": "Server was unable to connect to Epitech's intra API", "code": 500}}), 500
+
+@app.route('/event/rdv', methods=['GET'])
+def appoointment_registered():
+    error, session, params = log_and_check_params(["token", "scolaryear", "codemodule", "codeinstance", "codeacti"], request)
+    if error != {}:
+        return json.dumps(error), error['error']['code']
+    try:
+        url = server_url + "/module/%s/%s/%s/%s/rdv?format=json" % (params['scolaryear'], params['codemodule'], params['codeinstance'], params['codeacti'])
         r = session.get(url, verify=ssl_verify)
 
         if r.status_code == 403:
