@@ -263,7 +263,7 @@ def module():
                 {"error": {"message": "Server was unable to connect to Epitech's intra API", "code": 500}}), 500
 
 @app.route('/module/registered', methods=['GET'])
-def module_grades():
+def module_registered():
     error, session, params = log_and_check_params(["token", "scolaryear", "codemodule", "codeinstance"], request)
     if error != {}:
         return json.dumps(error), error['error']['code']
@@ -387,6 +387,28 @@ def event():
     except:
         return json.dumps(
                 {"error": {"message": "Server was unable to connect to Epitech's intra API", "code": 500}}), 500
+
+@app.route('/event/registered', methods=['GET'])
+def event_registered():
+    error, session, params = log_and_check_params(["token", "scolaryear", "codemodule", "codeinstance", "codeacti", "codeevent"], request)
+    if error != {}:
+        return json.dumps(error), error['error']['code']
+    try:
+        print("lolilol")
+        url = server_url + "/module/%s/%s/%s/%s/%s/registered?format=json" % (params['scolaryear'], params['codemodule'], params['codeinstance'], params['codeacti'], params['codeevent'])
+        print(url)
+        r = session.get(url, verify=ssl_verify)
+
+        if r.status_code == 403:
+            if "// Epitech JSON webservice" in r.text:
+                return clean_json(r.text), 403
+            return json.dumps({"error": {"message": "Connection token is invalid or has expired", 'code': 403}}), 403
+        return clean_json(r.text)
+    except:
+        return json.dumps(
+                {"error": {"message": "Server was unable to connect to Epitech's intra API", "code": 500}}), 500
+
+
 
 @app.route('/trombi', methods=['GET'])
 def trombi():
