@@ -423,6 +423,22 @@ def appoointment_registered():
         return json.dumps(
                 {"error": {"message": "Server was unable to connect to Epitech's intra API", "code": 500}}), 500
 
+@app.route('/event/rdv', methods=['POST'])
+def appoointment_register():
+    error, session, params = log_and_check_params(["token", "scolaryear", "codemodule", "codeinstance", "codeacti", "idcreneau", 'idteam'], request)
+    if error != {}:
+        return json.dumps(error), error['error']['code']
+    try:
+        url = server_url + "/module/%s/%s/%s/%s/rdv/register?id_creneau=%s&id_team=%s&format=json" % (params['scolaryear'], params['codemodule'], params['codeinstance'], params['codeacti'], params['idcreneau'], params['idteam'])
+        r = session.post(url, verify=ssl_verify)
+        if r.status_code == 403:
+            if "// Epitech JSON webservice" in r.text:
+                return clean_json(r.text), 403
+            return json.dumps({"error": {"message": "Connection token is invalid or has expired", 'code': 403}}), 403
+        return clean_json(r.text)
+    except:
+        return json.dumps(
+                {"error": {"message": "Server was unable to connect to Epitech's intra API", "code": 500}}), 500
 
 
 @app.route('/trombi', methods=['GET'])
