@@ -10,14 +10,18 @@ import logging
 app = Flask(__name__)
 logging.basicConfig(filename=".api.log", level=logging.INFO)
 
+
 @app.route('/', methods=['POST', 'GET'])
 def doc():
     return render_template("api_epitech.html")
 
+
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     error, session, params = log_and_check_params(["login", "password"], request)
-    return (json.dumps(error), error['error']['code']) if error != {} else json.dumps({"token": session.cookies['PHPSESSID']})
+    return (json.dumps(error), error['error']['code']) if error != {} else json.dumps(
+            {"token": session.cookies['PHPSESSID']})
+
 
 @app.route('/infos', methods=['POST', 'GET'])
 def infos():
@@ -32,6 +36,7 @@ def infos():
         return r.text
     except:
         return json.dumps({"error": {"message": "Server was unable to connect through Epitech API", "code": 500}}), 500
+
 
 @app.route('/planning', methods=['POST', 'GET'])
 def planning():
@@ -57,6 +62,7 @@ def planning():
     except Exception as e:
         return json.dumps({"error": {"message": str(e), "code": 500}}), 500
 
+
 @app.route('/susies', methods=['POST', 'GET'])
 def susies():
     error, session, params = log_and_check_params(["start", "end", "token"], request)
@@ -79,6 +85,7 @@ def susies():
     except Exception as e:
         return json.dumps({"error": {"message": str(e), "code": 500}}), 500
 
+
 @app.route('/susie', methods=['POST', 'GET', 'DELETE'])
 def susie(action=""):
     method = request.method
@@ -88,18 +95,19 @@ def susie(action=""):
     _id = params['id']
     try:
         action = {"POST": "subscribe",
-                    "DELETE": "unsubscribe",
-                    "GET": ""}
+                  "DELETE": "unsubscribe",
+                  "GET": ""}
         route = server_url + "/planning/%s/%s/%s?format=json" % (params['calendar_id'], _id, action[method])
-        r = session.post(route,verify=ssl_verify)
+        r = session.post(route, verify=ssl_verify)
         if r.status_code == 403:
             if "// Epitech JSON webservice" in r.text:
                 return clean_json(r.text), 403
             return json.dumps(
-                        {"error": {"message": "Connection token is invalid or has expired", 'code': 403}}), 403
+                    {"error": {"message": "Connection token is invalid or has expired", 'code': 403}}), 403
         return clean_json(r.text)
     except Exception as e:
         return json.dumps({"error": {"message": str(e), "code": 500}}), 500
+
 
 @app.route('/projects', methods=['POST', 'GET'])
 def projects():
@@ -120,6 +128,7 @@ def projects():
     except Exception as e:
         return json.dumps({"error": {"message": str(e), "code": 500}}), 500
 
+
 @app.route('/project', methods=['GET', 'POST', 'DELETE'])
 def project():
     method = request.method
@@ -129,19 +138,21 @@ def project():
         return json.dumps(error), error['error']['code']
     try:
         action = {"GET": "",
-                    "POST": "register",
-                    "DELETE": "destroygroup"}
+                  "POST": "register",
+                  "DELETE": "destroygroup"}
         route = server_url + "/module/%s/%s/%s/%s/project/%s?format=json" % (params['scolaryear'], params['codemodule'],
-            params['codeinstance'], params['codeacti'], action[method])
-        r = session.post(route ,verify=ssl_verify)
+                                                                             params['codeinstance'], params['codeacti'],
+                                                                             action[method])
+        r = session.post(route, verify=ssl_verify)
         if r.status_code == 403:
             if "// Epitech JSON webservice" in r.text:
                 return clean_json(r.text), 403
             return json.dumps(
-                        {"error": {"message": "Connection token is invalid or has expired", 'code': 403}}), 403
+                    {"error": {"message": "Connection token is invalid or has expired", 'code': 403}}), 403
         return clean_json(r.text)
     except Exception as e:
         return json.dumps({"error": {"message": str(e), "code": 500}}), 500
+
 
 @app.route('/project/files', methods=['GET'])
 def get_file():
@@ -156,10 +167,11 @@ def get_file():
             if "// Epitech JSON webservice" in r.text:
                 return clean_json(r.text), 403
             return json.dumps(
-                        {"error": {"message": "Connection token is invalid or has expired", 'code': 403}}), 403
+                    {"error": {"message": "Connection token is invalid or has expired", 'code': 403}}), 403
         return clean_json(r.text)
     except Exception as e:
         return json.dumps({"error": {"message": str(e), "code": 500}}), 500
+
 
 @app.route('/project/marks', methods=['GET'])
 def project_marks():
@@ -177,6 +189,7 @@ def project_marks():
     except:
         return json.dumps({"error": {"message": "Server was unable to connect through Epitech API", "code": 500}}), 500
 
+
 @app.route('/user/files', methods=['GET'])
 def get_user_files():
     error, session, params = log_and_check_params(["token", "login"], request)
@@ -188,10 +201,11 @@ def get_user_files():
             if "// Epitech JSON webservice" in r.text:
                 return clean_json(r.text), 403
             return json.dumps(
-                        {"error": {"message": "Connection token is invalid or has expired", 'code': 403}}), 403
+                    {"error": {"message": "Connection token is invalid or has expired", 'code': 403}}), 403
         return clean_json(r.text)
     except Exception as e:
         return json.dumps({"error": {"message": str(e), "code": 500}}), 500
+
 
 @app.route('/user/flags', methods=['GET'])
 def get_user_flags():
@@ -204,10 +218,11 @@ def get_user_flags():
             if "// Epitech JSON webservice" in r.text:
                 return clean_json(r.text), 403
             return json.dumps(
-                        {"error": {"message": "Connection token is invalid or has expired", 'code': 403}}), 403
+                    {"error": {"message": "Connection token is invalid or has expired", 'code': 403}}), 403
         return clean_json(r.text)
     except Exception as e:
         return json.dumps({"error": {"message": str(e), "code": 500}}), 500
+
 
 @app.route('/allmodules', methods=['GET'])
 def allmodules():
@@ -224,6 +239,7 @@ def allmodules():
     except:
         return json.dumps({"error": {"message": "Server was unable to connect through Epitech API", "code": 500}}), 500
 
+
 @app.route('/modules', methods=['POST', 'GET'])
 def modules():
     """/modules (POST,GET) login, password"""
@@ -239,6 +255,7 @@ def modules():
     except:
         return json.dumps({"error": {"message": "Server was unable to connect through Epitech API", "code": 500}}), 500
 
+
 @app.route('/module', methods=['GET', 'POST', 'DELETE'])
 def module():
     method = request.method
@@ -247,8 +264,8 @@ def module():
         return json.dumps(error), error['error']['code']
     try:
         action = {"GET": "",
-                    "POST": "register",
-                    "DELETE": "unregister"}
+                  "POST": "register",
+                  "DELETE": "unregister"}
         url = server_url + "/module/%s/%s/%s/%s?format=json" % (
             params['scolaryear'], params['codemodule'], params['codeinstance'], action[method])
         r = session.post(url, verify=ssl_verify)
@@ -261,13 +278,15 @@ def module():
         return json.dumps(
                 {"error": {"message": "Server was unable to connect to Epitech's intra API", "code": 500}}), 500
 
+
 @app.route('/module/registered', methods=['GET'])
 def module_registered():
     error, session, params = log_and_check_params(["token", "scolaryear", "codemodule", "codeinstance"], request)
     if error != {}:
         return json.dumps(error), error['error']['code']
     try:
-        url = server_url + "/module/%s/%s/%s/registered?format=json" % (params['scolaryear'], params['codemodule'], params['codeinstance'])
+        url = server_url + "/module/%s/%s/%s/registered?format=json" % (
+        params['scolaryear'], params['codemodule'], params['codeinstance'])
         r = session.post(url, verify=ssl_verify)
         if r.status_code == 403:
             if "// Epitech JSON webservice" in r.text:
@@ -277,6 +296,7 @@ def module_registered():
     except:
         return json.dumps(
                 {"error": {"message": "Server was unable to connect to Epitech's intra API", "code": 500}}), 500
+
 
 @app.route('/marks', methods=['POST', 'GET'])
 def marks():
@@ -295,6 +315,7 @@ def marks():
     except:
         return {"error": {"message": "Server was unable to connect through Epitech API", "code": 500}}
 
+
 @app.route('/messages', methods=['POST', 'GET'])
 def messages():
     """/messages (POST,GET) login, password"""
@@ -308,6 +329,7 @@ def messages():
         return clean_json(r.text)
     except Exception as e:
         return json.dumps({"error": {"message": str(e), "code": 500}}), 500
+
 
 @app.route('/alerts', methods=['POST', 'GET'])
 def alerts():
@@ -323,6 +345,7 @@ def alerts():
     except Exception as e:
         return json.dumps({"error": {"message": str(e), "code": 500}}), 500
 
+
 @app.route('/photo', methods=['POST', 'GET'])
 def photo():
     """/photo (POST,GET) login, password"""
@@ -330,6 +353,7 @@ def photo():
     if error != {}:
         return json.dumps(error)
     return json.dumps({"url": "https://cdn.local.epitech.eu/userprofil/profilview/%s.jpg" % params['login']})
+
 
 @app.route('/token', methods=['POST', 'GET'])
 def token():
@@ -351,6 +375,7 @@ def token():
         return json.dumps(
                 {"error": {"message": "Server was unable to connect to Epitech's intra API", "code": 500}}), 500
 
+
 @app.route('/user', methods=['GET'])
 def user():
     error, session, params = log_and_check_params(["token", "user"], request)
@@ -365,6 +390,7 @@ def user():
         return json.dumps(
                 {"error": {"message": "Server was unable to connect to Epitech's intra API", "code": 500}}), 500
 
+
 @app.route('/event', methods=['GET', 'POST', 'DELETE'])
 def event():
     method = request.method
@@ -374,8 +400,8 @@ def event():
         return json.dumps(error), error['error']['code']
     try:
         action = {"GET": "",
-                    "POST": "register",
-                    "DELETE": "unregister"}
+                  "POST": "register",
+                  "DELETE": "unregister"}
         url = server_url + "/module/%s/%s/%s/%s/%s/%s?format=json" % (
             params['scolaryear'], params['codemodule'], params['codeinstance'], params['codeacti'],
             params['codeevent'], action[method])
@@ -387,13 +413,16 @@ def event():
         return json.dumps(
                 {"error": {"message": "Server was unable to connect to Epitech's intra API", "code": 500}}), 500
 
+
 @app.route('/event/registered', methods=['GET'])
 def event_registered():
-    error, session, params = log_and_check_params(["token", "scolaryear", "codemodule", "codeinstance", "codeacti", "codeevent"], request)
+    error, session, params = log_and_check_params(
+            ["token", "scolaryear", "codemodule", "codeinstance", "codeacti", "codeevent"], request)
     if error != {}:
         return json.dumps(error), error['error']['code']
     try:
-        url = server_url + "/module/%s/%s/%s/%s/%s/registered?format=json" % (params['scolaryear'], params['codemodule'], params['codeinstance'], params['codeacti'], params['codeevent'])
+        url = server_url + "/module/%s/%s/%s/%s/%s/registered?format=json" % (
+        params['scolaryear'], params['codemodule'], params['codeinstance'], params['codeacti'], params['codeevent'])
         r = session.get(url, verify=ssl_verify)
 
         if r.status_code == 403:
@@ -404,14 +433,17 @@ def event_registered():
     except:
         return json.dumps(
                 {"error": {"message": "Server was unable to connect to Epitech's intra API", "code": 500}}), 500
+
 
 @app.route('/event/rdv', methods=['GET'])
 def appoointment_registered():
-    error, session, params = log_and_check_params(["token", "scolaryear", "codemodule", "codeinstance", "codeacti"], request)
+    error, session, params = log_and_check_params(["token", "scolaryear", "codemodule", "codeinstance", "codeacti"],
+                                                  request)
     if error != {}:
         return json.dumps(error), error['error']['code']
     try:
-        url = server_url + "/module/%s/%s/%s/%s/rdv?format=json" % (params['scolaryear'], params['codemodule'], params['codeinstance'], params['codeacti'])
+        url = server_url + "/module/%s/%s/%s/%s/rdv?format=json" % (
+        params['scolaryear'], params['codemodule'], params['codeinstance'], params['codeacti'])
         r = session.get(url, verify=ssl_verify)
 
         if r.status_code == 403:
@@ -423,13 +455,22 @@ def appoointment_registered():
         return json.dumps(
                 {"error": {"message": "Server was unable to connect to Epitech's intra API", "code": 500}}), 500
 
+
 @app.route('/event/rdv', methods=['POST'])
 def appoointment_register():
-    error, session, params = log_and_check_params(["token", "scolaryear", "codemodule", "codeinstance", "codeacti", "idcreneau", 'idteam'], request)
+    error, session, params = log_and_check_params(
+            ["token", "scolaryear", "codemodule", "codeinstance", "codeacti", "idcreneau"], request)
     if error != {}:
         return json.dumps(error), error['error']['code']
     try:
-        url = server_url + "/module/%s/%s/%s/%s/rdv/register?id_creneau=%s&id_team=%s&format=json" % (params['scolaryear'], params['codemodule'], params['codeinstance'], params['codeacti'], params['idcreneau'], params['idteam'])
+        if 'idteam' in params:
+            url = server_url + "/module/%s/%s/%s/%s/rdv/register?id_creneau=%s&id_team=%s&format=json" % (
+                params['scolaryear'], params['codemodule'], params['codeinstance'], params['codeacti'], params['idcreneau'],
+                params['idteam'])
+        else:
+            url = server_url + "/module/%s/%s/%s/%s/rdv/register?id_creneau=%s&login=%s&format=json" % (
+                params['scolaryear'], params['codemodule'], params['codeinstance'], params['codeacti'], params['idcreneau'],
+                params['login'])
         r = session.post(url, verify=ssl_verify)
         if r.status_code == 403:
             if "// Epitech JSON webservice" in r.text:
@@ -459,13 +500,16 @@ def trombi():
         return json.dumps(
                 {"error": {"message": "Server was unable to connect to Epitech's intra API", "code": 500}}), 500
 
+
 @app.route('/rank', methods=['GET'])
 def rank():
     return json.dumps({"message": "Available soon"})
 
+
 @app.route('/ping', methods=['POST', 'GET'])
 def wake_up():
     return ("pong"), 200
+
 
 if __name__ == '__main__':
     try:
