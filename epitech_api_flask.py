@@ -475,7 +475,7 @@ def appoointment_register():
         if r.status_code == 403:
             if "// Epitech JSON webservice" in r.text:
                 return clean_json(r.text), 403
-            return json.dumps({"error": {"message": "Connection token is invalid or has expired", 'code': 403}}), 403
+            return json.dumps({"error": {"message": r.text, 'code': 403}}), 403
         return clean_json(r.text)
     except:
         return json.dumps(
