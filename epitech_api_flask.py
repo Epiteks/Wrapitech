@@ -482,6 +482,32 @@ def appoointment_register():
                 {"error": {"message": "Server was unable to connect to Epitech's intra API", "code": 500}}), 500
 
 
+@app.route('/event/rdv', methods=['DELETE'])
+def appoointment_unregister():
+    error, session, params = log_and_check_params(
+            ["token", "scolaryear", "codemodule", "codeinstance", "codeacti", "idcreneau"], request)
+    if error != {}:
+        return json.dumps(error), error['error']['code']
+    try:
+        if 'idteam' in params:
+            url = server_url + "/module/%s/%s/%s/%s/rdv/unregister?id_creneau=%s&id_team=%s&format=json" % (
+                params['scolaryear'], params['codemodule'], params['codeinstance'], params['codeacti'], params['idcreneau'],
+                params['idteam'])
+        else:
+            url = server_url + "/module/%s/%s/%s/%s/rdv/unregister?id_creneau=%s&login=%s&format=json" % (
+                params['scolaryear'], params['codemodule'], params['codeinstance'], params['codeacti'], params['idcreneau'],
+                params['login'])
+        r = session.post(url, verify=ssl_verify)
+        if r.status_code == 403:
+            if "// Epitech JSON webservice" in r.text:
+                return clean_json(r.text), 403
+            return json.dumps({"error": {"message": r.text, 'code': 403}}), 403
+        return clean_json(r.text)
+    except:
+        return json.dumps(
+                {"error": {"message": "Server was unable to connect to Epitech's intra API", "code": 500}}), 500
+
+
 @app.route('/trombi', methods=['GET'])
 def trombi():
     filters = ""
