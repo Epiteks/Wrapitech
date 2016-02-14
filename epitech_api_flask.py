@@ -483,7 +483,7 @@ def appoointment_register():
 
 
 @app.route('/event/rdv', methods=['DELETE'])
-def appoointment_unregister():
+def appoointment_unregister(form=None):
     error, session, params = log_and_check_params(
             ["token", "scolaryear", "codemodule", "codeinstance", "codeacti", "idcreneau"], request)
     if error != {}:
@@ -493,11 +493,13 @@ def appoointment_unregister():
             url = server_url + "/module/%s/%s/%s/%s/rdv/unregister?id_creneau=%s&id_team=%s&format=json" % (
                 params['scolaryear'], params['codemodule'], params['codeinstance'], params['codeacti'], params['idcreneau'],
                 params['idteam'])
+            form = {"value" :{"id_creneau" :params['idcreneau'], "id_team" :params['idteam']}}
         else:
-            url = server_url + "/module/%s/%s/%s/%s/rdv/unregister?id_creneau=%s&login=%s&format=json" % (
-                params['scolaryear'], params['codemodule'], params['codeinstance'], params['codeacti'], params['idcreneau'],
-                params['login'])
-        r = session.post(url, verify=ssl_verify)
+            url = server_url + "/module/%s/%s/%s/%s/rdv/unregister?format=json" % (
+            params['scolaryear'], params['codemodule'], params['codeinstance'], params['codeacti'])
+            form = {'value' :{'id_creneau' :params['idcreneau'], 'login' :params['login']}}
+
+            r = session.post(url, json = form, verify=ssl_verify)
         if r.status_code == 403:
             if "// Epitech JSON webservice" in r.text:
                 return clean_json(r.text), 403
