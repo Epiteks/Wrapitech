@@ -497,7 +497,7 @@ def appoointment_unregister(form=None):
         else:
             url = server_url + "/module/%s/%s/%s/%s/rdv/unregister?format=json" % (
             params['scolaryear'], params['codemodule'], params['codeinstance'], params['codeacti'])
-            form = {'value' :{'id_creneau' :params['idcreneau'], 'login' :params['login']}}
+            form = {'value[0][id_creneau]' :params['idcreneau'], 'value[0][login]' :params['login']}
 
             r = session.post(url, json = form, verify=ssl_verify)
         if r.status_code == 403:
