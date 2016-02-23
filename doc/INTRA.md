@@ -17,6 +17,32 @@ Response :
 }
 ````
 
+#### Update
+
+Route : POST /login
+
+Parameters : None
+
+Body :
+````json
+{
+    "login": "login_x",
+    "password": "UNIXPWD"
+}
+````
+
+Response :
+````json
+--- 200 Connected ---
+{
+    "token": "xxx"
+}
+--- 400 Wrong body format || 401 Not connected ---
+{
+    "error": "xxx"
+}
+````
+
 ### POST /infos
 
 Get informations displayed on login
