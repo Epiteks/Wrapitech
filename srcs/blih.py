@@ -52,7 +52,8 @@ def newRepository():
 		data = json.loads(request.data)
 		if "name" not in data:
 			return requester.error("Missing name", 400)
-		if type(data["name"]) != str:
+		print(type(data["name"]))
+		if type(data["name"]) not in [str, unicode]:
 			return requester.error("Wrong name format", 400)
 		repo = {"name": data["name"], "type": "git", "description": ("" if "description" not in data else data["description"])}
 	except:
