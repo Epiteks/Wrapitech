@@ -103,16 +103,19 @@ def getRepositoryACL(repo):
 
 @subApp.route('/repository/<repo>/acls/<user>', methods=['GET'])
 def getRepositoryUserACL(repo, user):
-	status, login, password = getCredentials()
-	if not status:
-		return requester.error("Missing credentials", 401)
-	result = getRepositoryACL(repo)
-	if int(result.status[:3]) != 200:
-		return requester.error(result.requester.response[0], 404)
-	users = json.loads(result.requester.response[0])
-	result = filter(lambda x:x["login"].lower() == str(user), users)
-	result = result[0] if len(result) else {"requester.error": "User not found"}
-	return requester.response(result, (200 if "login" in result else 404))
+	try:
+		status, login, password = getCredentials()
+		if not status:
+			return requester.error("Missing credentials", 401)
+		result = getRepositoryACL(repo)
+		if int(result.status[:3]) != 200:
+			return requester.error(result.response[0], 404)
+		users = json.loads(result.response[0])
+		result = filter(lambda x:x["login"].lower() == str(user), users)
+		result = result[0] if len(result) else {"requester.error": "User not found"}
+		return requester.response(result, (200 if "login" in result else 404))
+	except Exception as e:
+		print(e)
 
 @subApp.route('/repository/<repo>/acls/<user>', methods=['POST'])
 def setRepositoryUserACL(repo, user):
