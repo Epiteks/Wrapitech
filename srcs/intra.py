@@ -1,5 +1,7 @@
 from flask import Blueprint, request#, Response
 import json
+from time import strftime, strptime
+from datetime import timedelta, date
 import requester
 
 subApp = Blueprint('intra', __name__)
@@ -7,9 +9,27 @@ subApp = Blueprint('intra', __name__)
 def	make_route(route):
 	return "https://intra.epitech.eu" + route
 
+class URLArgError(Exception):
+
+	def __init__(self, value):
+		self.message = value
+		self.value = "URLArg Error : " + self.message
+
+	def __str__(self):
+		return repr(self.value)
+
+def getArg(key, default=None):
+	res = request.args.get(key)
+	if not res:
+		if default:
+			return default
+		else:
+			raise URLArgError("Missing argument {0}".format(key))
+	return res
+
 def	getTokenRequest(url, method, data=None):
 	req = requester.Request(url, method, data)
-	req.setCookie("PHPSESSID", request.args.get("token"))
+	req.setCookie("PHPSESSID", getArg("token"))
 	return req if request.args.get("token") else None
 
 @subApp.route('/', methods=['GET'])
@@ -49,96 +69,129 @@ def getInfos():
 
 @subApp.route('/planning', methods=['GET'])
 def getPlanning():
-	pass
+	try:
+		route = "/intra/planning/load?format=json&start={0}&end={1}".format(getArg("start"), getArg("end"))
+	except URLArgError as e:
+		return requester.error(e.message, 401)
+	req = getTokenRequest(make_route(route), "POST")
+	if not req:
+		return requester.error("Missing token", 401)
+	result = requester.executeRequest(req)
+	if result["code"] == 200:
+		return requester.response(result["data"], 200)
+	return requester.error(result["data"]["message"], 401)
 
 @subApp.route('/susies', methods=['GET'])
 def getSusies():
-	pass
+	return requester.error("Available soon", 501)
 
 @subApp.route('/susie', methods=['GET'])
 def getSusie():
-	pass
+	return requester.error("Available soon", 501)
 
 @subApp.route('/susie', methods=['POST'])
 def subscribeSusie():
-	pass
+	return requester.error("Available soon", 501)
 
 @subApp.route('/susie', methods=['DELETE'])
 def unsubscribeSusie():
-	pass
+	return requester.error("Available soon", 501)
 
 @subApp.route('/projects', methods=['GET'])
 def getProjects():
-	pass
+	try:
+		now = getArg("start", strftime("%Y-%m-%d", date.today().timetuple()))
+		end = strptime(now, "%Y-%m-%d") + timedelta(days=365)
+		print(now)
+		print(end)
+		route = "/module/board/?format=json&start={0}&end={1}".format(now, end)
+	except URLArgError as e:
+		return requester.error(e.message, 401)
+	req = getTokenRequest(make_route(route), "POST")
+	if not req:
+		return requester.error("Missing token", 401)
+	result = requester.executeRequest(req)
+	if result["code"] == 200:
+		return requester.response(result["data"], 200)
+	return requester.error(result["data"]["message"], 401)
 
 @subApp.route('/project', methods=['GET'])
 def getProject():
-	pass
+	return requester.error("Available soon", 501)
 
 @subApp.route('/project', methods=['POST'])
 def subscribeProject():
-	pass
+	return requester.error("Available soon", 501)
 
 @subApp.route('/project', methods=['DELETE'])
 def unsubscribeProject():
-	pass
+	return requester.error("Available soon", 501)
 
 @subApp.route('/project/files', methods=['GET'])
 def getProjectFiles():
-	pass
+	return requester.error("Available soon", 501)
 
 @subApp.route('/modules', methods=['GET'])
 def getUserModules():
-	pass
+	return requester.error("Available soon", 501)
 
 @subApp.route('/allmodules', methods=['GET'])
 def getModules():
-	pass
+	return requester.error("Available soon", 501)
 
 @subApp.route('/module', methods=['GET'])
 def getModule():
-	pass
+	return requester.error("Available soon", 501)
 
 @subApp.route('/module', methods=['POST'])
 def subscribeModule():
-	pass
+	return requester.error("Available soon", 501)
 
 @subApp.route('/module', methods=['DELETE'])
 def unsubscribeModule():
-	pass
+	return requester.error("Available soon", 501)
 
 @subApp.route('/event', methods=['GET'])
 def getEvent():
-	pass
+	return requester.error("Available soon", 501)
 
 @subApp.route('/event', methods=['POST'])
 def subscribeEvent():
-	pass
+	return requester.error("Available soon", 501)
 
 @subApp.route('/event', methods=['DELETE'])
 def unsubscribeEvent():
-	pass
+	return requester.error("Available soon", 501)
 
 @subApp.route('/marks', methods=['GET'])
 def getMarks():
-	pass
+	return requester.error("Available soon", 501)
 
 @subApp.route('/messages', methods=['GET'])
 def getMessages():
-	pass
+	return requester.error("Available soon", 501)
 
 @subApp.route('/alerts', methods=['GET'])
 def getAlerts():
-	pass
+	return requester.error("Available soon", 501)
 
+#TODO : Check if user exist
 @subApp.route('/photo', methods=['GET'])
 def getPhoto():
-	pass
+	req = getTokenRequest(make_route("/?format=json"), "GET")
+	if not req:
+		return requester.error("Missing token", 401)
+	login = getArg("login", "")
+	if login:
+		result = {"url": "https://cdn.local.epitech.eu/userprofil/profilview/{0}.jpg".format(login)}
+		return requester.response(result, 200)
+	else:
+		return requester.error("Missing login", 401)
 
 @subApp.route('/token', methods=['POST'])
 def setToken():
-	pass
+	return requester.error("Available soon", 501)
 
 @subApp.route('/trombi', methods=['GET'])
 def getUserList():
-	pass
+	return requester.error("Available soon", 501)
