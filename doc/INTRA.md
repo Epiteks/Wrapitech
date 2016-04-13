@@ -302,6 +302,8 @@ Get projects
 
 Parameters :
 * __"token":"42"__
+* "start":"YYYY-MM-DD"
+* "end":"YYYY-MM-DD"
 
 Response :
 ````json

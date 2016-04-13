@@ -74,3 +74,6 @@ api.log
 #Dev
 *.iml
 .idea/
+.python-version
+.todo
+tests.json
