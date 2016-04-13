@@ -48,7 +48,7 @@ def login():
 			return requester.error("Wrong login format", 400)
 		body = {"login": data["login"], "password": data["password"]}
 	except:
-		return requester.error("Wrong login format""Wrong login format", 400)
+		return requester.error("Wrong login format", 400)
 	req = requester.Request(make_route("/?format=json"), "POST", body)
 	result = requester.executeRequest(req)
 	if result["code"] == 200:
@@ -179,12 +179,12 @@ def getAlerts():
 #TODO : Check if user exist
 @subApp.route('/photo', methods=['GET'])
 def getPhoto():
-	login = getArg("login", "")
-	if login:
+	try:
+		login = getArg("login", "")
 		result = {"url": "https://cdn.local.epitech.eu/userprofil/profilview/{0}.jpg".format(login)}
 		return requester.response(result, 200)
-	else:
-		return requester.error("Missing login", 401)
+	except URLArgError as e:
+		return requester.error(e.message, 401)
 
 @subApp.route('/token', methods=['POST'])
 def setToken():
