@@ -175,12 +175,10 @@ def getMessages():
 def getAlerts():
 	return requester.error("Available soon", 501)
 
+#TODO : Need auth?
 #TODO : Check if user exist
 @subApp.route('/photo', methods=['GET'])
 def getPhoto():
-	req = getTokenRequest(make_route("/?format=json"), "GET")
-	if not req:
-		return requester.error("Missing token", 401)
 	login = getArg("login", "")
 	if login:
 		result = {"url": "https://cdn.local.epitech.eu/userprofil/profilview/{0}.jpg".format(login)}
