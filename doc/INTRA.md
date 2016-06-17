@@ -514,6 +514,46 @@ Parameters :
 Response :
 ````json
 {
+    [
+        {
+        "type":"-",
+        "slug":"pfa.pdf",
+        "title":"pfa.pdf",
+        "secure":true,
+        "synchro":false,
+        "archive":false,
+        "language":"FR",
+        "size":277067,
+        "ctime":"2014-10-08 13:42:56",
+        "mtime":"2014-10-08 13:42:56",
+        "mime":"application\/pdf",
+        "isLeaf":false,
+        "noFolder":false,
+        "rights":{
+        "ged_read":1,
+        "ged_write":1
+        },
+        "fullpath":"\/module\/2014\/B-GPR-360-0\/PAR-6-1\/acti-167486\/project\/file\/pfa.pdf"
+        }
+    ]
+}
+````
+
+
+### GET /project/marks
+
+Get project marks
+
+Parameters :
+* __"token":"42"__
+* __"scolaryear":2014__
+* __"codemodule":"B-GPR-360-0"__
+* __"codeinstance":"PAR-6-1"__
+* __"codeacti":"acti-167486"__
+
+Response :
+````json
+{
 	[
 		{
 		"type":"-",
