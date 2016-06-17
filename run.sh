@@ -1,2 +1,5 @@
 #!/bin/sh
-sudo python3 epitech_api_flask.py
+
+cd /work/EpitechAPI
+
+python2.7 epitech_api_flask.py

@@ -1,0 +1,8 @@
+version: '2'
+services:
+  api:
+    build: .
+    image: hug33k/epitechapi
+    container_name: EpitechAPI
+    ports:
+     - "8044:80"
