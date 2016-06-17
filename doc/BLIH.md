@@ -30,7 +30,7 @@ Response :
 
 ## Repository
 
-### GET /repository
+### GET /repositories
 
 Get repositories list
 
@@ -46,7 +46,7 @@ Response :
 ]
 ````
 
-### POST /repository
+### POST /repositories
 
 Create new repository
 
@@ -69,7 +69,7 @@ Response :
 }
 ````
 
-### GET /repository/___repo___
+### GET /repositories/___repo___
 
 Get repository informations
 
@@ -81,7 +81,7 @@ Response :
 ````json
 {
     "uuid": "...",
-    "url": "https://blih.epitech.eu/repository/Project",
+    "url": "https://blih.epitech.eu/repositories/Project",
     "creation_time": "123456789",
     "name": "Project",
     "public": "False",
@@ -89,7 +89,7 @@ Response :
 }
 ````
 
-### DELETE /repository/___repo___
+### DELETE /repositories/___repo___
 
 Delete repository
 
@@ -104,7 +104,7 @@ Response :
 }
 ````
 
-### GET /repository/___repo___/acls
+### GET /repositories/___repo___/acls
 
 Get repository ACLs
 
@@ -125,7 +125,7 @@ Response :
 ]
 ````
 
-### GET /repository/____repo___/acls/___user___
+### GET /repositories/____repo___/acls/___user___
 
 Get repository ACLs for user
 
@@ -143,7 +143,7 @@ Response :
 }
 ````
 
-### POST /repository/___repo___/acls/___user___
+### POST /repositories/___repo___/acls/___user___
 
 Set repository ACLs for user
 
@@ -169,7 +169,7 @@ Response :
 
 ## SSHKeys
 
-### GET /sshkey
+### GET /sshkeys
 
 Get sshkeys list
 
@@ -188,7 +188,7 @@ Response :
 ]
 ````
 
-### POST /sshkey
+### POST /sshkeys
 
 Add sshkey
 
@@ -210,7 +210,7 @@ Response :
 }
 ````
 
-### DELETE /sshkey/___key___
+### DELETE /sshkeys/___key___
 
 Delete sshkey
 

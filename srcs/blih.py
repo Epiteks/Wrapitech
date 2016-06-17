@@ -7,9 +7,8 @@ import requester
 subApp = Blueprint('blih', __name__)
 
 def getCredentials():
-	login = request.args.get('login')
-	password = request.args.get('password')
-	return (login != None and password != None), login, password
+	auth = request.authorization
+	return (auth != None), auth.username if auth else "", auth.password if auth else ""
 
 def	make_route(route):
 	return "https://blih.epitech.eu" + route
@@ -29,7 +28,7 @@ def	make_body(login, password, data=None):
 def root():
 	return requester.response({"status": True}, 200)
 
-@subApp.route('/repository', methods=['GET'])
+@subApp.route('/repositories', methods=['GET'])
 def getRepositoriesList():
 	status, login, password = getCredentials()
 	if not status:
@@ -43,7 +42,7 @@ def getRepositoriesList():
 	repositories.sort(key=lambda x:x.lower())
 	return requester.response(repositories, (200 if result["code"] in [200, 404] else result["code"]))
 
-@subApp.route('/repository', methods=['POST'])
+@subApp.route('/repositories', methods=['POST'])
 def newRepository():
 	status, login, password = getCredentials()
 	if not status:
@@ -52,7 +51,6 @@ def newRepository():
 		data = json.loads(request.data)
 		if "name" not in data:
 			return requester.error("Missing name", 400)
-		print(type(data["name"]))
 		if type(data["name"]) not in [str, unicode]:
 			return requester.error("Wrong name format", 400)
 		repo = {"name": data["name"], "type": "git", "description": ("" if "description" not in data else data["description"])}
@@ -60,34 +58,35 @@ def newRepository():
 		return requester.error("Wrong body format", 400)
 	req = requester.Request(make_route("/repositories"), "POST", make_body(login, password, repo))
 	result = requester.executeRequest(req)
+	print(result)
 	return requester.response(result["data"], result["code"])
 
-@subApp.route('/repository/<repo>', methods=['GET'])
+@subApp.route('/repositories/<repo>', methods=['GET'])
 def getRepositoryInfo(repo):
 	status, login, password = getCredentials()
 	if not status:
 		return requester.error("Missing credentials", 401)
-	req = requester.Request(make_route("/repository/{0}".format(repo)), "GET", make_body(login, password))
+	req = requester.Request(make_route("/repositories/{0}".format(repo)), "GET", make_body(login, password))
 	result = requester.executeRequest(req)
 	data = result["data"]["message"]
 	data["name"] = repo
 	return requester.response(data, result["code"])
 
-@subApp.route('/repository/<repo>', methods=['DELETE'])
+@subApp.route('/repositories/<repo>', methods=['DELETE'])
 def deleteRepository(repo):
 	status, login, password = getCredentials()
 	if not status:
 		return requester.error("Missing credentials", 401)
-	req = requester.Request(make_route("/repository/{0}".format(repo)), "DELETE", make_body(login, password))
+	req = requester.Request(make_route("/repositories/{0}".format(repo)), "DELETE", make_body(login, password))
 	result = requester.executeRequest(req)
 	return requester.response(result["data"], result["code"])
 
-@subApp.route('/repository/<repo>/acls', methods=['GET'])
+@subApp.route('/repositories/<repo>/acls', methods=['GET'])
 def getRepositoryACL(repo):
 	status, login, password = getCredentials()
 	if not status:
 		return requester.error("Missing credentials", 401)
-	req = requester.Request(make_route("/repository/{0}/acls".format(repo)), "GET", make_body(login, password))
+	req = requester.Request(make_route("/repositories/{0}/acls".format(repo)), "GET", make_body(login, password))
 	result = requester.executeRequest(req)
 	data = []
 	if result["code"] == 200:
@@ -101,7 +100,7 @@ def getRepositoryACL(repo):
 	data.sort(key=lambda x:x["login"].lower())
 	return requester.response(data, (200 if result["code"] in [200, 404] else result["code"]))
 
-@subApp.route('/repository/<repo>/acls/<user>', methods=['GET'])
+@subApp.route('/repositories/<repo>/acls/<user>', methods=['GET'])
 def getRepositoryUserACL(repo, user):
 	try:
 		status, login, password = getCredentials()
@@ -117,7 +116,7 @@ def getRepositoryUserACL(repo, user):
 	except Exception as e:
 		print(e)
 
-@subApp.route('/repository/<repo>/acls/<user>', methods=['POST'])
+@subApp.route('/repositories/<repo>/acls/<user>', methods=['POST'])
 def setRepositoryUserACL(repo, user):
 	status, login, password = getCredentials()
 	if not status:
@@ -132,16 +131,16 @@ def setRepositoryUserACL(repo, user):
 					"acl": acl}
 	except:
 		return requester.error("Missing key", 400)
-	req = requester.Request(make_route("/repository/{0}/acls".format(repo)), "POST", make_body(login, password, rights))
+	req = requester.Request(make_route("/repositories/{0}/acls".format(repo)), "POST", make_body(login, password, rights))
 	result = requester.executeRequest(req)
 	return requester.response(result["data"], result["code"])
 
-@subApp.route('/sshkey', methods=['GET'])
+@subApp.route('/sshkeys', methods=['GET'])
 def getSSHKeysList():
 	status, login, password = getCredentials()
 	if not status:
 		return requester.error("Missing credentials", 401)
-	req = requester.Request(make_route("/sshkeys"), "GET", make_body(login, password))
+	req = requester.Request(make_route("/sshkeyss"), "GET", make_body(login, password))
 	result = requester.executeRequest(req)
 	keys = []
 	if result["code"] == 200:
@@ -151,7 +150,7 @@ def getSSHKeysList():
 		keys.sort(key=lambda x:x["name"].lower())
 	return requester.response(keys, (200 if result["code"] in [200, 404] else result["code"]))
 
-@subApp.route('/sshkey', methods=['POST'])
+@subApp.route('/sshkeys', methods=['POST'])
 def newSSHKey():
 	status, login, password = getCredentials()
 	if not status:
@@ -160,16 +159,16 @@ def newSSHKey():
 		key = {"sshkey": json.loads(request.data)["key"]}
 	except:
 		return requester.error("Missing key", 400)
-	req = requester.Request(make_route("/sshkeys"), "POST", make_body(login, password, key))
+	req = requester.Request(make_route("/sshkeyss"), "POST", make_body(login, password, key))
 	result = requester.executeRequest(req)
 	return requester.response(result["data"], result["code"])
 
-@subApp.route('/sshkey/<key>', methods=['DELETE'])
+@subApp.route('/sshkeys/<key>', methods=['DELETE'])
 def deleteSSHKey(key):
 	status, login, password = getCredentials()
 	if not status:
 		return requester.error("Missing credentials", 401)
-	req = requester.Request(make_route("/sshkey/{0}".format(key)), "DELETE", make_body(login, password))
+	req = requester.Request(make_route("/sshkeys/{0}".format(key)), "DELETE", make_body(login, password))
 	result = requester.executeRequest(req)
 	return requester.response(result["data"], result["code"])
 
