@@ -27,10 +27,20 @@ def getArg(key, default=None):
 			raise URLArgError("Missing argument {0}".format(key))
 	return res
 
+def checkAuth():
+	try:
+		getArg("token")
+		return True
+	except URLArgError:
+		return False
+
 def	getTokenRequest(url, method, data=None):
 	req = requester.Request(url, method, data)
-	req.setCookie("PHPSESSID", getArg("token"))
-	return req if request.args.get("token") else None
+	try:
+		req.setCookie("PHPSESSID", getArg("token"))
+		return req
+	except URLArgError:
+		return None
 
 @subApp.route('/', methods=['GET'])
 def root():
@@ -81,21 +91,25 @@ def getPlanning():
 		return requester.response(result["data"], 200)
 	return requester.error(result["data"]["message"], 401)
 
-@subApp.route('/susies', methods=['GET'])
-def getSusies():
-	return requester.error("Available soon", 501)
+# #TODO
+# @subApp.route('/susies', methods=['GET'])
+# def getSusies():
+# 	return requester.error("Available soon", 501)
 
-@subApp.route('/susie', methods=['GET'])
-def getSusie():
-	return requester.error("Available soon", 501)
+# #TODO
+# @subApp.route('/susie', methods=['GET'])
+# def getSusie():
+# 	return requester.error("Available soon", 501)
 
-@subApp.route('/susie', methods=['POST'])
-def subscribeSusie():
-	return requester.error("Available soon", 501)
+# #TODO
+# @subApp.route('/susie', methods=['POST'])
+# def subscribeSusie():
+# 	return requester.error("Available soon", 501)
 
-@subApp.route('/susie', methods=['DELETE'])
-def unsubscribeSusie():
-	return requester.error("Available soon", 501)
+# #TODO
+# @subApp.route('/susie', methods=['DELETE'])
+# def unsubscribeSusie():
+# 	return requester.error("Available soon", 501)
 
 @subApp.route('/projects', methods=['GET'])
 def getProjects():
@@ -117,79 +131,285 @@ def getProjects():
 
 @subApp.route('/project', methods=['GET'])
 def getProject():
-	return requester.error("Available soon", 501)
+	try:
+		route = "/module/{0}/{1}/{2}/{3}/project?format=json".format(getArg("year"), getArg("module"), getArg("instance"), getArg("activity"))
+	except URLArgError as e:
+		return requester.error(e.message, 401)
+	req = getTokenRequest(make_route(route), "POST")
+	if not req:
+		return requester.error("Missing token", 401)
+	result = requester.executeRequest(req)
+	if result["code"] == 200:
+		return requester.response(result["data"], 200)
+	return requester.error(result["data"]["message"], 401)
 
 @subApp.route('/project', methods=['POST'])
 def subscribeProject():
-	return requester.error("Available soon", 501)
+	try:
+		route = "/module/{0}/{1}/{2}/{3}/project/register?format=json".format(getArg("scolaryear"), getArg("codemodule"), getArg("codeinstance"), getArg("codeacti"))
+	except URLArgError as e:
+		return requester.error(e.message, 401)
+	req = getTokenRequest(make_route(route), "POST")
+	if not req:
+		return requester.error("Missing token", 401)
+	result = requester.executeRequest(req)
+	if result["code"] == 200:
+		return requester.response(result["data"], 200)
+	return requester.error(result["data"]["message"], 401)
 
 @subApp.route('/project', methods=['DELETE'])
 def unsubscribeProject():
-	return requester.error("Available soon", 501)
+	try:
+		route = "/module/{0}/{1}/{2}/{3}/project/destroygroup?format=json".format(getArg("scolaryear"), getArg("codemodule"), getArg("codeinstance"), getArg("codeacti"))
+	except URLArgError as e:
+		return requester.error(e.message, 401)
+	req = getTokenRequest(make_route(route), "POST")
+	if not req:
+		return requester.error("Missing token", 401)
+	result = requester.executeRequest(req)
+	if result["code"] == 200:
+		return requester.response(result["data"], 200)
+	return requester.error(result["data"]["message"], 401)
 
 @subApp.route('/project/files', methods=['GET'])
 def getProjectFiles():
-	return requester.error("Available soon", 501)
+	try:
+		route = "/module/{0}/{1}/{2}/{3}/project/file?format=json".format(getArg("year"), getArg("module"), getArg("instance"), getArg("activity"))
+	except URLArgError as e:
+		return requester.error(e.message, 401)
+	req = getTokenRequest(make_route(route), "POST")
+	if not req:
+		return requester.error("Missing token", 401)
+	result = requester.executeRequest(req)
+	if result["code"] == 200:
+		return requester.response(result["data"], 200)
+	return requester.error(result["data"]["message"], 401)
 
-@subApp.route('/modules', methods=['GET'])
-def getUserModules():
-	return requester.error("Available soon", 501)
+@subApp.route('/project/marks', methods=['GET'])
+def getProjectMarks():
+	try:
+		route = "/module/{0}/{1}/{2}/{3}/note?format=json".format(getArg("year"), getArg("module"), getArg("instance"), getArg("activity"))
+	except URLArgError as e:
+		return requester.error(e.message, 401)
+	req = getTokenRequest(make_route(route), "POST")
+	if not req:
+		return requester.error("Missing token", 401)
+	result = requester.executeRequest(req)
+	if result["code"] == 200:
+		return requester.response(result["data"], 200)
+	return requester.error(result["data"]["message"], 401)
 
 @subApp.route('/allmodules', methods=['GET'])
 def getModules():
-	return requester.error("Available soon", 501)
+	try:
+		year = getArg("scolaryear")
+		location = getArg("location")
+		course = getArg("course")
+		route = "/course/filter?format=json&preload=1&location=FR&location={0}&course={1}&scolaryear={2}".format(location, course, year)
+	except URLArgError as e:
+		return requester.error(e.message, 401)
+	req = getTokenRequest(make_route(route), "GET")
+	if not req:
+		return requester.error("Missing token", 401)
+	result = requester.executeRequest(req)
+	if result["code"] == 200:
+		return requester.response(result["data"], 200)
+	return requester.error(result["data"]["message"], 401)
+
+@subApp.route('/modules', methods=['GET'])
+def getUserModules():
+	try:
+		login = getArg("login")
+		route = "/user/{0}/notes".format(login)
+	except:
+		route = "/user/#!/netsoul"
+	req = getTokenRequest(make_route(route + "?format=json"), "POST")
+	if not req:
+		return requester.error("Missing token", 401)
+	req.execute()
+	if req.getCode() == 200:
+		raw = req.getText()
+		start = raw.find("window.user = $.extend(window.user || {}, {")
+		end = raw.find("notes: [")
+		result = json.loads(raw[start + 54:end - 4])
+		return requester.response(result, 200)
+	return requester.error("Results not found", 401)
 
 @subApp.route('/module', methods=['GET'])
 def getModule():
-	return requester.error("Available soon", 501)
+	try:
+		route = "/module/{0}/{1}/{2}?format=json".format(getArg("year"), getArg("module"), getArg("instance"))
+	except URLArgError as e:
+		return requester.error(e.message, 401)
+	req = getTokenRequest(make_route(route), "POST")
+	if not req:
+		return requester.error("Missing token", 401)
+	result = requester.executeRequest(req)
+	if result["code"] == 200:
+		return requester.response(result["data"], 200)
+	return requester.error(result["data"]["message"], 401)
 
 @subApp.route('/module', methods=['POST'])
 def subscribeModule():
-	return requester.error("Available soon", 501)
+	try:
+		route = "/module/{0}/{1}/{2}/register?format=json".format(getArg("year"), getArg("module"), getArg("instance"))
+	except URLArgError as e:
+		return requester.error(e.message, 401)
+	req = getTokenRequest(make_route(route), "POST")
+	if not req:
+		return requester.error("Missing token", 401)
+	result = requester.executeRequest(req)
+	if result["code"] == 200:
+		return requester.response(result["data"], 200)
+	return requester.error(result["data"]["message"], 401)
 
 @subApp.route('/module', methods=['DELETE'])
 def unsubscribeModule():
-	return requester.error("Available soon", 501)
+	try:
+		route = "/module/{0}/{1}/{2}/unregister?format=json".format(getArg("year"), getArg("module"), getArg("instance"))
+	except URLArgError as e:
+		return requester.error(e.message, 401)
+	req = getTokenRequest(make_route(route), "POST")
+	if not req:
+		return requester.error("Missing token", 401)
+	result = requester.executeRequest(req)
+	if result["code"] == 200:
+		return requester.response(result["data"], 200)
+	return requester.error(result["data"]["message"], 401)
 
 @subApp.route('/event', methods=['GET'])
 def getEvent():
-	return requester.error("Available soon", 501)
+	try:
+		route = "/module/{0}/{1}/{2}/{3}/{4}?format=json".format(getArg("year"), getArg("module"), getArg("instance"), getArg("activity"), getArg("event"))
+	except URLArgError as e:
+		return requester.error(e.message, 401)
+	req = getTokenRequest(make_route(route), "POST")
+	if not req:
+		return requester.error("Missing token", 401)
+	result = requester.executeRequest(req)
+	if result["code"] == 200:
+		return requester.response(result["data"], 200)
+	return requester.error(result["data"]["message"], 401)
 
 @subApp.route('/event', methods=['POST'])
 def subscribeEvent():
-	return requester.error("Available soon", 501)
+	try:
+		route = "/module/{0}/{1}/{2}/{3}/{4}/register?format=json".format(getArg("year"), getArg("module"), getArg("instance"), getArg("activity"), getArg("event"))
+	except URLArgError as e:
+		return requester.error(e.message, 401)
+	req = getTokenRequest(make_route(route), "POST")
+	if not req:
+		return requester.error("Missing token", 401)
+	result = requester.executeRequest(req)
+	if result["code"] == 200:
+		return requester.response(result["data"], 200)
+	return requester.error(result["data"]["message"], 401)
 
 @subApp.route('/event', methods=['DELETE'])
 def unsubscribeEvent():
-	return requester.error("Available soon", 501)
+	try:
+		route = "/module/{0}/{1}/{2}/{3}/{4}/unregister?format=json".format(getArg("year"), getArg("module"), getArg("instance"), getArg("activity"), getArg("event"))
+	except URLArgError as e:
+		return requester.error(e.message, 401)
+	req = getTokenRequest(make_route(route), "POST")
+	if not req:
+		return requester.error("Missing token", 401)
+	result = requester.executeRequest(req)
+	if result["code"] == 200:
+		return requester.response(result["data"], 200)
+	return requester.error(result["data"]["message"], 401)
 
 @subApp.route('/marks', methods=['GET'])
 def getMarks():
-	return requester.error("Available soon", 501)
+	try:
+		login = getArg("login")
+		route = "/user/{0}/#!/notes".format(login)
+	except:
+		route = "/user/#!/netsoul"
+	req = getTokenRequest(make_route(route + "?format=json"), "POST")
+	if not req:
+		return requester.error("Missing token", 401)
+	req.execute()
+	if req.getCode() == 200:
+		raw = req.getText()
+		start = raw.find("notes: [")
+		end = raw.find("});", start)
+		result = json.loads(raw[start + 7:end])
+		return requester.response(result, 200)
+	return requester.error("Results not found", 401)
 
 @subApp.route('/messages', methods=['GET'])
 def getMessages():
-	return requester.error("Available soon", 501)
+	route = "/intra/user/notification/message?format=json"
+	req = getTokenRequest(make_route(route), "POST")
+	if not req:
+		return requester.error("Missing token", 401)
+	result = requester.executeRequest(req)
+	if result["code"] == 200:
+		return requester.response(result["data"], 200)
+	return requester.error(result["data"]["message"], 401)
 
 @subApp.route('/alerts', methods=['GET'])
 def getAlerts():
-	return requester.error("Available soon", 501)
+	route = "/intra/user/notification/alert?format=json"
+	req = getTokenRequest(make_route(route), "POST")
+	if not req:
+		return requester.error("Missing token", 401)
+	result = requester.executeRequest(req)
+	if result["code"] == 200:
+		return requester.response(result["data"], 200)
+	return requester.error(result["data"]["message"], 401)
 
-#TODO : Need auth?
 #TODO : Check if user exist
 @subApp.route('/photo', methods=['GET'])
 def getPhoto():
 	try:
+		if not checkAuth():
+			return requester.error("Missing token", 401)
 		login = getArg("login", "")
 		result = {"url": "https://cdn.local.epitech.eu/userprofil/profilview/{0}.jpg".format(login)}
 		return requester.response(result, 200)
 	except URLArgError as e:
 		return requester.error(e.message, 401)
 
+#TODO : Check if rate and comment are usefull or not
 @subApp.route('/token', methods=['POST'])
 def setToken():
-	return requester.error("Available soon", 501)
+	try:
+		route = "/module/{0}/{1}/{2}/{3}/{4}/register?format=json".format(getArg("year"), getArg("module"), getArg("instance"), getArg("activity"), getArg("event"))
+		data = {"token": getArg("token"), "rate": 1, "comment": ""}
+	except URLArgError as e:
+		return requester.error(e.message, 401)
+	req = getTokenRequest(make_route(route), "POST", data)
+	if not req:
+		return requester.error("Missing token", 401)
+	result = requester.executeRequest(req)
+	if result["code"] == 200:
+		return requester.response(result["data"], 200)
+	return requester.error(result["data"]["message"], 401)
 
 @subApp.route('/trombi', methods=['GET'])
 def getUserList():
-	return requester.error("Available soon", 501)
+	route = "/user/filter/user?format=json"
+	args = ["location", "year"]
+	opt = ["bachelor", "promo"]
+	for arg in args:
+		try:
+			value = getArg(arg)
+			route += "&{0}={1}".format(arg, value)
+		except URLArgError as e:
+			return requester.error(e.message, 401)
+	for arg in opt:
+		try:
+			value = getArg(arg)
+			route += "&{0}={1}".format(arg, value)
+		except:
+			pass
+	req = getTokenRequest(make_route(route), "POST")
+	print(req._url)
+	if not req:
+		return requester.error("Missing token", 401)
+	result = requester.executeRequest(req)
+	if result["code"] == 200:
+		return requester.response(result["data"], 200)
+	return requester.error(result["data"]["message"], 401)
