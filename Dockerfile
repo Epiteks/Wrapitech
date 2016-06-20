@@ -1,26 +1,21 @@
-FROM debian:jessie
+FROM jfloff/alpine-python:2.7
 
 MAINTAINER hug33k
 
-ENV PORT	80
-
-RUN	mkdir /work
-
-COPY	./requirements.txt /work/requirements.txt
-
-RUN	apt-get update -qqy && \
-	apt-get install -qqy python2.7 python-dev python-pip curl && \
-	pip install -r /work/requirements.txt
-
-RUN	apt-get update -qqy && \
-	apt-get install -qqy zip
+ENV EPITECH_API_PORT	80
+ENV EPITECH_API_DEBUG	FALSE
+ENV EPITECH_API_LOGGER	TRUE
+ENV EPITECH_API_SLACK_TOKEN FALSE
+ENV EPITECH_API_SLACK_LEVEL	FALSE
 
 EXPOSE 80
 
-COPY	./EpitechAPI-0.0.0.zip /work/EpitechAPI.zip
+RUN	mkdir /work
 
-RUN		cd /work && unzip EpitechAPI.zip
+COPY	. /work/
 
-COPY	./run.sh /work/run.sh
+RUN	pip install -r /work/requirements.txt
 
-CMD ["sh", "/work/run.sh"]
+WORKDIR	/work
+
+CMD ["python", "server.py"]

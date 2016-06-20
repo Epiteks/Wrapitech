@@ -6,3 +6,10 @@ services:
     container_name: EpitechAPI
     ports:
      - "8044:80"
+    environment:
+     - EPITECH_API_PORT=80
+     - EPITECH_API_DEBUG=FALSE
+     - EPITECH_API_LOGGER=TRUE
+     - EPITECH_API_LOGGER_LEVEL=INFO
+     - EPITECH_API_SLACK_TOKEN=T07J3U99B/B1JARSKAP/X8SVetMor1nx9XJeEHDSRNXY
+     - EPITECH_API_SLACK_LEVEL=ERROR

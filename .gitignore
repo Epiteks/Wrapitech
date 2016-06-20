@@ -77,3 +77,4 @@ api.log
 .python-version
 .todo
 tests.json
+.env
