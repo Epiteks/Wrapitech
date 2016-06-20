@@ -54,7 +54,6 @@ def login():
 			if value not in data:
 				return requester.error("Missing {0}".format(value), 400)
 		if type(data["login"]) not in [str, unicode]:
-			print(type(data["login"]))
 			return requester.error("Wrong login format", 400)
 		body = {"login": data["login"], "password": data["password"]}
 	except:
@@ -116,8 +115,6 @@ def getProjects():
 	try:
 		now = getArg("start", strftime("%Y-%m-%d", date.today().timetuple()))
 		end = strptime(now, "%Y-%m-%d") + timedelta(days=365)
-		print(now)
-		print(end)
 		route = "/module/board/?format=json&start={0}&end={1}".format(now, end)
 	except URLArgError as e:
 		return requester.error(e.message, 401)
@@ -406,7 +403,6 @@ def getUserList():
 		except:
 			pass
 	req = getTokenRequest(make_route(route), "POST")
-	print(req._url)
 	if not req:
 		return requester.error("Missing token", 401)
 	result = requester.executeRequest(req)

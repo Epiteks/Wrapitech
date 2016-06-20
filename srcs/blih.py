@@ -58,7 +58,6 @@ def newRepository():
 		return requester.error("Wrong body format", 400)
 	req = requester.Request(make_route("/repositories"), "POST", make_body(login, password, repo))
 	result = requester.executeRequest(req)
-	print(result)
 	return requester.response(result["data"], result["code"])
 
 @subApp.route('/repositories/<repo>', methods=['GET'])
@@ -114,7 +113,7 @@ def getRepositoryUserACL(repo, user):
 		result = result[0] if len(result) else {"requester.error": "User not found"}
 		return requester.response(result, (200 if "login" in result else 404))
 	except Exception as e:
-		print(e)
+		return requester.error(str(e), 500)
 
 @subApp.route('/repositories/<repo>/acls/<user>', methods=['POST'])
 def setRepositoryUserACL(repo, user):

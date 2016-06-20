@@ -79,18 +79,20 @@ class	Request(object):
 	def	setHeader(self, key, value):
 		self._headers[key] = value
 
-def executeRequest(req):
+def executeRequest(req, parse=True):
 	status = req.execute()
-	return req.parse() if status else req.getError()
+	if parse:
+		return req.parse() if status else req.getError()
+	return status
 
-def get(url):
-	return executeRequest(Request(url, "GET"))
+def get(url, parse=True):
+	return executeRequest(Request(url, "GET"), parse=parse)
 
-def post(url, data=None):
-	return executeRequest(Request(url, "POST", data))
+def post(url, data=None, parse=True):
+	return executeRequest(Request(url, "POST", data), parse=parse)
 
-def delete(url, data=None):
-	return executeRequest(Request(url, "DELETE", data))
+def delete(url, data=None, parse=True):
+	return executeRequest(Request(url, "DELETE", data), parse=parse)
 
 def response(res, code):
 	return Response(response=json.dumps(res), mimetype="application/json", status=code)
