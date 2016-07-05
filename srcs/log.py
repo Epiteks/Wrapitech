@@ -20,7 +20,8 @@ def getLevel():
 
 logger = RotatingFileHandler('api.log', backupCount=500)
 logger.setLevel(getLevel())
-logger.format("[%(asctime)s] {%(pathname)s:%(lineno)d} ~%(levelname)s~ - %(message)s")
+formatter = logging.Formatter("[%(asctime)s] {%(pathname)s:%(lineno)d} ~%(levelname)s~ - %(message)s")
+logger.setFormatter(formatter)
 try:
 	slackLevel = os.environ["EPITECH_API_SLACK_LEVEL"]
 	slackURL = "https://hooks.slack.com/services/" + os.environ["EPITECH_API_SLACK_TOKEN"]
