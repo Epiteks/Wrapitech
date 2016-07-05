@@ -53,7 +53,7 @@ class	Request(object):
 		return None
 
 	def	getError(self):
-		return {"code": self._request.status_code, "data": self._request.json()} if self._request else None
+		return {"code": self._request.status_code, "data": self._request.json()} if self._request != None else None
 
 	def	getCookies(self):
 		return self._request.cookies if self._request else None
