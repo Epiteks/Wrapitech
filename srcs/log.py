@@ -20,6 +20,7 @@ def getLevel():
 
 logger = RotatingFileHandler('api.log', backupCount=500)
 logger.setLevel(getLevel())
+logger.format("[%(asctime)s] {%(pathname)s:%(lineno)d} ~%(levelname)s~ - %(message)s")
 try:
 	slackLevel = os.environ["EPITECH_API_SLACK_LEVEL"]
 	slackURL = "https://hooks.slack.com/services/" + os.environ["EPITECH_API_SLACK_TOKEN"]
@@ -28,7 +29,7 @@ except:
 	slackURL = None
 
 def toSlack(message):
-	message = message.replace("[WARNING]", ":bangbang:").replace("[ERROR]", ":exclamation:").replace("[INFO]", ":information_source:")
+	message = message.replace("~WARNING~", ":bangbang:").replace("~ERROR~", ":exclamation:").replace("~INFO~", ":information_source:")
 	if not slackLevel or not slackURL:
 		return
 	res = requester.post(slackURL, {"text": message}, parse=False)
