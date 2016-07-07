@@ -1,7 +1,7 @@
-from flask import Blueprint, request#, Response
+from flask import Blueprint, request
 import json
-from time import strftime, strptime
-from datetime import timedelta, date
+from time import strftime
+from datetime import timedelta, date, datetime
 import requester
 
 subApp = Blueprint('intra', __name__)
@@ -79,7 +79,9 @@ def getInfos():
 @subApp.route('/planning', methods=['GET'])
 def getPlanning():
 	try:
-		route = "/intra/planning/load?format=json&start={0}&end={1}".format(getArg("start"), getArg("end"))
+		start = getArg("start", strftime("%Y-%m-%d", date.today().timetuple()))
+		end = getArg("end", (datetime.strptime(start, "%Y-%m-%d") + timedelta(days=6)))
+		route = "/intra/planning/load?format=json&start={0}&end={1}".format(start, end)
 	except URLArgError as e:
 		return requester.error(e.message, 401)
 	req = getTokenRequest(make_route(route), "POST")
@@ -90,32 +92,12 @@ def getPlanning():
 		return requester.response(result["data"], 200)
 	return requester.error(result["data"]["message"], 401)
 
-# #TODO
-# @subApp.route('/susies', methods=['GET'])
-# def getSusies():
-# 	return requester.error("Available soon", 501)
-
-# #TODO
-# @subApp.route('/susie', methods=['GET'])
-# def getSusie():
-# 	return requester.error("Available soon", 501)
-
-# #TODO
-# @subApp.route('/susie', methods=['POST'])
-# def subscribeSusie():
-# 	return requester.error("Available soon", 501)
-
-# #TODO
-# @subApp.route('/susie', methods=['DELETE'])
-# def unsubscribeSusie():
-# 	return requester.error("Available soon", 501)
-
 @subApp.route('/projects', methods=['GET'])
 def getProjects():
 	try:
-		now = getArg("start", strftime("%Y-%m-%d", date.today().timetuple()))
-		end = strptime(now, "%Y-%m-%d") + timedelta(days=365)
-		route = "/module/board/?format=json&start={0}&end={1}".format(now, end)
+		start = getArg("start", strftime("%Y-%m-%d", date.today().timetuple()))
+		end = getArg("end", datetime.strptime(start, "%Y-%m-%d") + timedelta(days=365))
+		route = "/module/board/?format=json&start={0}&end={1}".format(start, end)
 	except URLArgError as e:
 		return requester.error(e.message, 401)
 	req = getTokenRequest(make_route(route), "POST")
@@ -402,6 +384,38 @@ def getUserList():
 			route += "&{0}={1}".format(arg, value)
 		except:
 			pass
+	req = getTokenRequest(make_route(route), "POST")
+	if not req:
+		return requester.error("Missing token", 401)
+	result = requester.executeRequest(req)
+	if result["code"] == 200:
+		return requester.response(result["data"], 200)
+	return requester.error(result["data"]["message"], 401)
+
+#TODO : Use current user's login if no arg
+@subApp.route('/user', methods=['GET'])
+def getUserInfos():
+	try:
+		login = getArg("login")
+		route = "/user/{0}?format=json".format(login)
+	except URLArgError as e:
+		return requester.error(e.message, 401)
+	req = getTokenRequest(make_route(route), "POST")
+	if not req:
+		return requester.error("Missing token", 401)
+	result = requester.executeRequest(req)
+	if result["code"] == 200:
+		return requester.response(result["data"], 200)
+	return requester.error(result["data"]["message"], 401)
+
+#TODO : Automatically use current user's login
+@subApp.route('/user/files', methods=['GET'])
+def getUserFiles():
+	try:
+		login = getArg("login")
+		route = "/user/{0}/document/?format=json".format(login)
+	except URLArgError as e:
+		return requester.error(e.message, 401)
 	req = getTokenRequest(make_route(route), "POST")
 	if not req:
 		return requester.error("Missing token", 401)
