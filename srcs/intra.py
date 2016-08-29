@@ -3,6 +3,7 @@ import json
 from time import strftime
 from datetime import timedelta, date, datetime
 import requester
+import formatter
 
 subApp = Blueprint('intra', __name__)
 
