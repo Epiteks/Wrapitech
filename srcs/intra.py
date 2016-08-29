@@ -21,7 +21,7 @@ class URLArgError(Exception):
 def getArg(key, default=None):
 	res = request.args.get(key)
 	if not res:
-		if default:
+		if default != None:
 			return default
 		else:
 			raise URLArgError("Missing argument {0}".format(key))
