@@ -412,8 +412,11 @@ def getUserInfos():
 @subApp.route('/user/files', methods=['GET'])
 def getUserFiles():
 	try:
+		raw = bool(getArg("raw", "false").lower() == "true")
 		login = getArg("login")
-		route = "/user/{0}/document/?format=json".format(login)
+		folder = getArg("folder", "")
+		route = "/user/{0}/document/{1}?format=json".format(login, folder)
+		print(route)
 	except URLArgError as e:
 		return requester.error(e.message, 401)
 	req = getTokenRequest(make_route(route), "POST")
@@ -421,5 +424,9 @@ def getUserFiles():
 		return requester.error("Missing token", 401)
 	result = requester.executeRequest(req)
 	if result["code"] == 200:
-		return requester.response(result["data"], 200)
+		try:
+			output = result["data"] if raw else formatter.format("document", result["data"])
+			return requester.response(output, 200)
+		except formatter.DataError as e:
+			return requester.error(e.message, 401)
 	return requester.error(result["data"]["message"], 401)
