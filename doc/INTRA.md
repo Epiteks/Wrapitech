@@ -185,7 +185,7 @@ Response :
 Get module infos
 
 Parameters :
-* __token : 42 __
+* __token : 42__
 * __scolaryear : YYYY__
 * __codemodule : X-XXX-XXX-X__
 * __codeinstance : XXX-X-X__
@@ -200,7 +200,7 @@ Response :
 Subscribe to module
 
 Parameters :
-* __token : 42 __
+* __token : 42__
 * __scolaryear : YYYY__
 * __codemodule : X-XXX-XXX-X__
 * __codeinstance : XXX-X-X__
@@ -215,7 +215,7 @@ Response :
 Unsubscribe to module
 
 Parameters :
-* __token : 42 __
+* __token : 42__
 * __scolaryear : YYYY__
 * __codemodule : X-XXX-XXX-X__
 * __codeinstance : XXX-X-X__
@@ -348,7 +348,7 @@ Response :
 Get a list of students
 
 Parameters :
-* __token : 42 __
+* __token : 42__
 * __year : 2014__
 * __location : [FR/PAR, FR/BDX, FR/LIL, FR/LYN, FR/MAR, FR/MPL, FR/NCY, FR/NAN, FR/NCE, FR/PAR, FR/REN, FR/STG, FR/TLS]__
 * course : [bachelor/classic, bachelor/tek1ed, bachelor/tek2ed]
@@ -380,6 +380,8 @@ Get your documents
 Parameters :
 * __token : 42__
 * __user : login_x__
+* folder : folderName
+* raw : [true, false]
 
 Response
 ````json
