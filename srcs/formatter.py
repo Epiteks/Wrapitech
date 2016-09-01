@@ -22,3 +22,4 @@ def _document(data):
 def format(dataType, data):
 	if dataType == "document":
 		return _document(data)
+	return data
