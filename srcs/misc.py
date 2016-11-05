@@ -4,6 +4,10 @@ import requester
 
 subApp = Blueprint('other', __name__)
 
+@subApp.route('/', methods=['GET'])
+def root():
+	return requester.response({"status": True}, 200)
+
 @subApp.route('/news', methods=['GET'])
 def getNews():
 	journal = news.Journal()

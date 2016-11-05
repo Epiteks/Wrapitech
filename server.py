@@ -15,7 +15,7 @@ if __name__ == '__main__':
 			api.logger.addHandler(log.logger)
 		api.register_blueprint(blih.subApp, url_prefix='/blih')
 		api.register_blueprint(intra.subApp, url_prefix='/intra')
-		api.register_blueprint(misc.subApp, url_prefix='/other')
+		api.register_blueprint(misc.subApp)
 		api.run(port=int(getVar("EPITECH_API_PORT", 8080)), host="0.0.0.0", threaded=True, debug=bool(getVar("EPITECH_API_DEBUG", False)))
 	except Exception as e:
 		print(e)
