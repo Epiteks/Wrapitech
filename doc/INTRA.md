@@ -77,10 +77,10 @@ Get project info
 
 Parameters :
 * __token : 42__
-* __scolaryear : YYYY__
-* __codemodule : X-XXX-XXX-X__
-* __codeinstance : XXX-X-X__
-* __codeacti : acti-XXXXXX__
+* __year : YYYY__
+* __module : X-XXX-XXX-X__
+* __instance : XXX-X-X__
+* __acti : acti-XXXXXX__
 
 Response :
 ````json
@@ -93,10 +93,10 @@ Suscribe to project
 
 Parameters :
 * __token : 42__
-* __scolaryear : YYYY__
-* __codemodule : X-XXX-XXX-X__
-* __codeinstance : XXX-X-X__
-* __codeacti : acti-XXXXXX__
+* __year : YYYY__
+* __module : X-XXX-XXX-X__
+* __instance : XXX-X-X__
+* __acti : acti-XXXXXX__
 
 Response :
 ````json
@@ -109,10 +109,10 @@ Unuscribe to project
 
 Parameters :
 * __token : 42__
-* __scolaryear : YYYY__
-* __codemodule : X-XXX-XXX-X__
-* __codeinstance : XXX-X-X__
-* __codeacti : acti-XXXXXX__
+* __year : YYYY__
+* __module : X-XXX-XXX-X__
+* __instance : XXX-X-X__
+* __acti : acti-XXXXXX__
 
 Response :
 ````json
@@ -125,10 +125,10 @@ Get project files
 
 Parameters :
 * __token : 42__
-* __scolaryear : YYYY__
-* __codemodule : X-XXX-XXX-X__
-* __codeinstance : XXX-X-X__
-* __codeacti : acti-XXXXXX__
+* __year : YYYY__
+* __module : X-XXX-XXX-X__
+* __instance : XXX-X-X__
+* __acti : acti-XXXXXX__
 
 Response :
 ````json
@@ -142,10 +142,10 @@ Get project marks
 
 Parameters :
 * __token : 42__
-* __scolaryear : YYYY__
-* __codemodule : X-XXX-XXX-X__
-* __codeinstance : XXX-X-X__
-* __codeacti : acti-XXXXXX__
+* __year : YYYY__
+* __module : X-XXX-XXX-X__
+* __instance : XXX-X-X__
+* __acti : acti-XXXXXX__
 
 Response :
 ````json
@@ -158,7 +158,7 @@ Get all modules
 
 Parameters :
 * __token : 42__
-* __scolaryear : 2014__
+* __year : 2014__
 * __location : [FR/PAR, FR/BDX, FR/LIL, FR/LYN, FR/MAR, FR/MPL, FR/NCY, FR/NAN, FR/NCE, FR/PAR, FR/REN, FR/STG, FR/TLS]__
 * __course : [bachelor/classic, bachelor/tek1ed, bachelor/tek2ed]__
 
@@ -186,9 +186,9 @@ Get module infos
 
 Parameters :
 * __token : 42__
-* __scolaryear : YYYY__
-* __codemodule : X-XXX-XXX-X__
-* __codeinstance : XXX-X-X__
+* __year : YYYY__
+* __module : X-XXX-XXX-X__
+* __instance : XXX-X-X__
 
 Response :
 ````json
@@ -201,9 +201,9 @@ Subscribe to module
 
 Parameters :
 * __token : 42__
-* __scolaryear : YYYY__
-* __codemodule : X-XXX-XXX-X__
-* __codeinstance : XXX-X-X__
+* __year : YYYY__
+* __module : X-XXX-XXX-X__
+* __instance : XXX-X-X__
 
 Response :
 ````json
@@ -216,9 +216,9 @@ Unsubscribe to module
 
 Parameters :
 * __token : 42__
-* __scolaryear : YYYY__
-* __codemodule : X-XXX-XXX-X__
-* __codeinstance : XXX-X-X__
+* __year : YYYY__
+* __module : X-XXX-XXX-X__
+* __instance : XXX-X-X__
 
 Response :
 ````json
@@ -231,11 +231,11 @@ Get event infos
 
 Parameters :
 * __token : 42__
-* __scolaryear : 2014__
-* __codemodule : X-XXX-XXX__
-* __codeinstance : XXX-X-X__
-* __codeacti : acti-XXXXXX__
-* __codeevent : event-XXXXXX__
+* __year : 2014__
+* __module : X-XXX-XXX__
+* __instance : XXX-X-X__
+* __acti : acti-XXXXXX__
+* __event : event-XXXXXX__
 
 Response :
 ````json
@@ -248,11 +248,11 @@ Subscribe to event
 
 Parameters :
 * __token : 42__
-* __scolaryear : 2014__
-* __codemodule : X-XXX-XXX__
-* __codeinstance : XXX-X-X__
-* __codeacti : acti-XXXXXX__
-* __codeevent : event-XXXXXX__
+* __year : 2014__
+* __module : X-XXX-XXX__
+* __instance : XXX-X-X__
+* __acti : acti-XXXXXX__
+* __event : event-XXXXXX__
 
 Response :
 ````json
@@ -266,11 +266,11 @@ Unsubscribe to event
 
 Parameters :
 * __token : 42__
-* __scolaryear : 2014__
-* __codemodule : X-XXX-XXX__
-* __codeinstance : XXX-X-X__
-* __codeacti : acti-XXXXXX__
-* __codeevent : event-XXXXXX__
+* __year : 2014__
+* __module : X-XXX-XXX__
+* __instance : XXX-X-X__
+* __acti : acti-XXXXXX__
+* __event : event-XXXXXX__
 
 Response :
 ````json
@@ -331,11 +331,11 @@ Response :
 Validate token
 
 * __token : 42__
-* __scolaryear : 2014__
-* __codemodule : X-XXX-XXX-X__
-* __codeinstance : XXX-X-X__
-* __codeacti : acti-XXXXXX__
-* __codeevent : event-XXXXXX__
+* __year : 2014__
+* __module : X-XXX-XXX-X__
+* __instance : XXX-X-X__
+* __acti : acti-XXXXXX__
+* __event : event-XXXXXX__
 * __tokenvalidationcode : XXXXXXXX__
 
 Response :

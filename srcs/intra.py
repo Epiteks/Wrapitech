@@ -126,7 +126,7 @@ def getProject():
 @subApp.route('/project', methods=['POST'])
 def subscribeProject():
 	try:
-		route = "/module/{0}/{1}/{2}/{3}/project/register?format=json".format(getArg("scolaryear"), getArg("codemodule"), getArg("codeinstance"), getArg("codeacti"))
+		route = "/module/{0}/{1}/{2}/{3}/project/register?format=json".format(getArg("year"), getArg("module"), getArg("instance"), getArg("activity"))
 	except URLArgError as e:
 		return requester.error(e.message, 401)
 	req = getTokenRequest(make_route(route), "POST")
@@ -140,7 +140,7 @@ def subscribeProject():
 @subApp.route('/project', methods=['DELETE'])
 def unsubscribeProject():
 	try:
-		route = "/module/{0}/{1}/{2}/{3}/project/destroygroup?format=json".format(getArg("scolaryear"), getArg("codemodule"), getArg("codeinstance"), getArg("codeacti"))
+		route = "/module/{0}/{1}/{2}/{3}/project/destroygroup?format=json".format(getArg("year"), getArg("module"), getArg("instance"), getArg("activity"))
 	except URLArgError as e:
 		return requester.error(e.message, 401)
 	req = getTokenRequest(make_route(route), "POST")
@@ -182,7 +182,7 @@ def getProjectMarks():
 @subApp.route('/allmodules', methods=['GET'])
 def getModules():
 	try:
-		year = getArg("scolaryear")
+		year = getArg("year")
 		location = getArg("location")
 		course = getArg("course")
 		route = "/course/filter?format=json&preload=1&location=FR&location={0}&course={1}&scolaryear={2}".format(location, course, year)
@@ -196,7 +196,7 @@ def getModules():
 		return requester.response(result["data"], 200)
 	return requester.error(result["data"]["message"], 401)
 
-@subApp.route('/modules', methods=['GET'])
+@subApp.route('/modules', methods=['GET']) #ERROR500
 def getUserModules():
 	try:
 		login = getArg("login")
