@@ -20,13 +20,14 @@ class URLArgError(Exception):
 		return repr(self.value)
 
 def getArg(key, default=None):
-	res = request.args.get(key)
-	if not res:
+	args = request.args.get(key)
+	head = request.headers.get(key)
+	if not args and not head:
 		if default != None:
 			return default
 		else:
 			raise URLArgError("Missing argument {0}".format(key))
-	return res
+	return (args if args else head)
 
 def checkAuth():
 	try:
