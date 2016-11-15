@@ -48,6 +48,16 @@ def	getTokenRequest(url, method, data=None):
 def root():
 	return requester.response({"status": True}, 200)
 
+@subApp.route('/status', methods=['GET'])
+def status():
+	try:
+		import os, platform
+		ping_str = "-n 1" if  platform.system().lower()=="windows" else "-c 1"
+		status = os.system("ping " + ping_str + " " + make_route("/")) == 0
+		return requester.response({"status": bool(status)}, 200)
+	except Exception:
+		return requester.response({"status": False}, 200)
+
 @subApp.route('/login', methods=['POST'])
 def login():
 	try:
