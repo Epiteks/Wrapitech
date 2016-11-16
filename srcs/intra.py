@@ -442,3 +442,18 @@ def getUserFiles():
 		except formatter.DataError as e:
 			return requester.error(e.message, 401)
 	return requester.error(result["data"]["message"], 401)
+
+@subApp.route('/user/flags', methods=['GET'])
+def getUserFlags():
+	try:
+		login = getArg("login")
+		route = "/user/{0}/flags/?format=json".format(login)
+	except URLArgError as e:
+		return requester.error(e.message, 401)
+	req = getTokenRequest(make_route(route), "POST")
+	if not req:
+		return requester.error("Missing token", 401)
+	result = requester.executeRequest(req)
+	if result["code"] == 200:
+		return requester.response(result["data"], 200)
+	return requester.error(result["data"]["message"], 401)
