@@ -447,7 +447,7 @@ def getUserFiles():
 def getUserFlags():
 	try:
 		login = getArg("login")
-		route = "/user/{0}/flags/?format=json".format(login)
+		route = "/user/{0}/#!/flags/?format=json".format(login)
 	except URLArgError as e:
 		return requester.error(e.message, 401)
 	req = getTokenRequest(make_route(route), "POST")
