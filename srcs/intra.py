@@ -453,7 +453,12 @@ def getUserFlags():
 	req = getTokenRequest(make_route(route), "POST")
 	if not req:
 		return requester.error("Missing token", 401)
-	result = requester.executeRequest(req)
+	result = requester.executeRequest(req, False)
+	resTxt = result.getText()
+	startPattern = "window.user = $.extend(window.user || {}, {flags: {"
+	start = resTxt.find(startPattern)
+	end = resTxt.find('"msg":[')
+	resTxt = resTxt[start + len(startPattern) - 9 : end - 7] + "}"
 	if result["code"] == 200:
-		return requester.response(result["data"], 200)
+		return requester.response(json.loads(resTxt), 200)
 	return requester.error(result["data"]["message"], 401)
