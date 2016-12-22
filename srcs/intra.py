@@ -53,7 +53,7 @@ def status():
 	try:
 		import os, platform
 		ping_str = "-n 1" if  platform.system().lower()=="windows" else "-c 1"
-		status = os.system("ping " + ping_str + " " + make_route("/")) == 0
+		status = os.system("ping " + ping_str + " " + make_route("/").replace("https://", "")) == 0
 		return requester.response({"status": bool(status)}, 200)
 	except Exception:
 		return requester.response({"status": False}, 200)
