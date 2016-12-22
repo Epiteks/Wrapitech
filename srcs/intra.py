@@ -460,5 +460,5 @@ def getUserFlags():
 	end = resTxt.find("}});")
 	resTxt = '{"flags": { "' + resTxt[start + len(startPattern) : end - 2] + "}"
 	if req.getCode() == 200:
-		return requester.response(json.loads(resTxt), 200)
+		return requester.response(json.loads(resTxt.replace("\n", "").replace("\t", "")), 200)
 	return requester.error(result["data"]["message"], 401)
