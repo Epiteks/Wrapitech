@@ -458,7 +458,7 @@ def getUserFlags():
 	startPattern = "window.user = $.extend(window.user || {}, {flags: {"
 	start = resTxt.find(startPattern)
 	end = resTxt.find("\}\});")
-	resTxt = '"{flags": { "' + resTxt[start + len(startPattern) : end - 7] + "}"
+	resTxt = '"{flags": { "' + resTxt[start + len(startPattern) : end - 2] + "}"
 	if req.getCode() == 200:
 		return requester.response(json.loads(resTxt), 200)
 	return requester.error(result["data"]["message"], 401)
