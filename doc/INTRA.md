@@ -225,6 +225,21 @@ Response :
 {...}
 ````
 
+### GET /module/registered
+
+Get registered users to module
+
+Parameters :
+* __token : 42__
+* __year : YYYY__
+* __module : X-XXX-XXX-X__
+* __instance : XXX-X-X__
+
+Response :
+````json
+{...}
+````
+
 ### GET /event
 
 Get event infos
@@ -263,6 +278,23 @@ Response :
 ### DELETE /event
 
 Unsubscribe to event
+
+Parameters :
+* __token : 42__
+* __year : 2014__
+* __module : X-XXX-XXX__
+* __instance : XXX-X-X__
+* __acti : acti-XXXXXX__
+* __event : event-XXXXXX__
+
+Response :
+````json
+{...}
+````
+
+### GET /event/registered
+
+Get registered users to event
 
 Parameters :
 * __token : 42__

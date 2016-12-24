@@ -268,6 +268,20 @@ def unsubscribeModule():
 		return requester.response(result["data"], 200)
 	return requester.error(result["data"]["message"], 401)
 
+@subApp.route('/module/registered', methods=['GET'])
+def registeredModule():
+	try:
+		route = "/module/{0}/{1}/{2}/registered?format=json".format(getArg("year"), getArg("module"), getArg("instance"))
+	except URLArgError as e:
+		return requester.error(e.message, 401)
+	req = getTokenRequest(make_route(route), "POST")
+	if not req:
+		return requester.error("Missing token", 401)
+	result = requester.executeRequest(req)
+	if result["code"] == 200:
+		return requester.response(result["data"], 200)
+	return requester.error(result["data"]["message"], 401)
+
 @subApp.route('/event', methods=['GET'])
 def getEvent():
 	try:
@@ -300,6 +314,20 @@ def subscribeEvent():
 def unsubscribeEvent():
 	try:
 		route = "/module/{0}/{1}/{2}/{3}/{4}/unregister?format=json".format(getArg("year"), getArg("module"), getArg("instance"), getArg("activity"), getArg("event"))
+	except URLArgError as e:
+		return requester.error(e.message, 401)
+	req = getTokenRequest(make_route(route), "POST")
+	if not req:
+		return requester.error("Missing token", 401)
+	result = requester.executeRequest(req)
+	if result["code"] == 200:
+		return requester.response(result["data"], 200)
+	return requester.error(result["data"]["message"], 401)
+
+@subApp.route('/event/registered', methods=['GET'])
+def registeredEvent():
+	try:
+		route = "/module/{0}/{1}/{2}/{3}/{4}/registered?format=json".format(getArg("year"), getArg("module"), getArg("instance"), getArg("activity"), getArg("event"))
 	except URLArgError as e:
 		return requester.error(e.message, 401)
 	req = getTokenRequest(make_route(route), "POST")
