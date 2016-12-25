@@ -165,7 +165,7 @@ def unsubscribeProject():
 @subApp.route('/project/files', methods=['GET'])
 def getProjectFiles():
 	try:
-		route = "/module/{0}/{1}/{2}/{3}/project/file?format=json".format(getArg("year"), getArg("module"), getArg("instance"), getArg("activity"))
+		route = "/module/{0}/{1}/{2}/{3}/project/file/?format=json".format(getArg("year"), getArg("module"), getArg("instance"), getArg("activity"))
 	except URLArgError as e:
 		return requester.error(e.message, 401)
 	req = getTokenRequest(make_route(route), "POST")
