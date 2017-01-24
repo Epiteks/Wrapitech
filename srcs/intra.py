@@ -116,7 +116,12 @@ def subscribePlanning():
 	result = requester.executeRequest(req)
 	if result["code"] == 200:
 		return requester.response(result["data"], 200)
-	return requester.error(result["data"]["message"], 401)
+	if "message" in result["data"]:
+		return requester.error(result["data"]["message"], 401)
+	elif "error" in result["data"]:
+		return requester.error(result["data"]["error"], 401)
+	else:
+		return requester.error("There is an error, try again", 401)
 
 @subApp.route('/planning', methods=['DELETE'])
 def unsubscribePlanning():
