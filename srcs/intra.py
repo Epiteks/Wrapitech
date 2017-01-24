@@ -405,7 +405,12 @@ def setToken():
 	result = requester.executeRequest(req)
 	if result["code"] == 200:
 		return requester.response(result["data"], 200)
-	return requester.error(result["data"]["message"], 401)
+	if "message" in result["data"]:
+		return requester.error(result["data"]["message"], 401)
+	elif "error" in result["data"]:
+		return requester.error(result["data"]["error"], 401)
+	else:
+		return request.error("There's an error, try again", 401)
 
 @subApp.route('/trombi', methods=['GET'])
 def getUserList():
@@ -489,4 +494,22 @@ def getUserFlags():
 	resTxt = '{"flags": { ' + resTxt[start + len(startPattern) : end + 2]
 	if req.getCode() == 200:
 		return requester.response(json.loads(resTxt.replace("\n", "").replace("\t", "")), 200)
+	return requester.error(result["data"]["message"], 401)
+
+
+
+
+
+@subApp.route('/project/<pid>', methods=['GET'])
+def test(pid):
+	try:
+		route = "/module/{0}/?format=json".format(pid)
+	except URLArgError as e:
+		return requester.error(e.message, 401)
+	req = getTokenRequest(make_route(route), "POST")
+	if not req:
+		return requester.error("Missing token", 401)
+	result = requester.executeRequest(req)
+	if result["code"] == 200:
+		return requester.response(result["data"], 200)
 	return requester.error(result["data"]["message"], 401)
