@@ -104,6 +104,39 @@ def getPlanning():
 		return requester.response(result["data"], 200)
 	return requester.error(result["data"]["message"], 401)
 
+@subApp.route('/planning', methods=['POST'])
+def subscribePlanning():
+	try:
+		route = "/intra/planning/{0}/{1}/subscribe?format=json".format(getArg("calendar"), getArg("event"))
+	except URLArgError as e:
+		return requester.error(e.message, 401)
+	req = getTokenRequest(make_route(route), "POST")
+	if not req:
+		return requester.error("Missing token", 401)
+	result = requester.executeRequest(req)
+	if result["code"] == 200:
+		return requester.response(result["data"], 200)
+	return requester.error(result["data"]["message"], 401)
+
+@subApp.route('/planning', methods=['DELETE'])
+def unsubscribePlanning():
+	try:
+		route = "/planning/{0}/{1}/unsubscribe?format=json".format(getArg("calendar"), getArg("event"))
+	except URLArgError as e:
+		return requester.error(e.message, 401)
+	req = getTokenRequest(make_route(route), "POST")
+	if not req:
+		return requester.error("Missing token", 401)
+	result = requester.executeRequest(req)
+	if result["code"] == 200:
+		return requester.response(result["data"], 200)
+	if "message" in result["data"]:
+		return requester.error(result["data"]["message"], 401)
+	elif "error" in result["data"]:
+		return requester.error(result["data"]["error"], 401)
+	else:
+		return requester.error("There is an error, try again", 401)
+
 @subApp.route('/projects', methods=['GET'])
 def getProjects():
 	try:
