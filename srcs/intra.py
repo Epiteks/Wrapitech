@@ -76,7 +76,12 @@ def login():
 		token = req.getCookies()['PHPSESSID']
 		return requester.response({"token": token}, 200)
 	else:
-		return requester.error(result["data"]["message"], 401)
+		if "message" in result["data"]:
+			return requester.error(result["data"]["message"], 401)
+		elif "error" in result["data"]:
+			return requester.error(result["data"]["error"], 401)
+		else:
+			return requester.error("There is an error, try again", 401)
 
 @subApp.route('/infos', methods=['GET'])
 def getInfos():
@@ -86,7 +91,12 @@ def getInfos():
 	result = requester.executeRequest(req)
 	if result["code"] == 200:
 		return requester.response(result["data"], 200)
-	return requester.error(result["data"]["message"], 401)
+	if "message" in result["data"]:
+		return requester.error(result["data"]["message"], 401)
+	elif "error" in result["data"]:
+		return requester.error(result["data"]["error"], 401)
+	else:
+		return requester.error("There is an error, try again", 401)
 
 @subApp.route('/planning', methods=['GET'])
 def getPlanning():
@@ -102,7 +112,12 @@ def getPlanning():
 	result = requester.executeRequest(req)
 	if result["code"] == 200:
 		return requester.response(result["data"], 200)
-	return requester.error(result["data"]["message"], 401)
+	if "message" in result["data"]:
+		return requester.error(result["data"]["message"], 401)
+	elif "error" in result["data"]:
+		return requester.error(result["data"]["error"], 401)
+	else:
+		return requester.error("There is an error, try again", 401)
 
 @subApp.route('/planning', methods=['POST'])
 def subscribePlanning():
@@ -156,7 +171,12 @@ def getProjects():
 	result = requester.executeRequest(req)
 	if result["code"] == 200:
 		return requester.response(result["data"], 200)
-	return requester.error(result["data"]["message"], 401)
+	if "message" in result["data"]:
+		return requester.error(result["data"]["message"], 401)
+	elif "error" in result["data"]:
+		return requester.error(result["data"]["error"], 401)
+	else:
+		return requester.error("There is an error, try again", 401)
 
 @subApp.route('/project', methods=['GET'])
 def getProject():
@@ -170,7 +190,12 @@ def getProject():
 	result = requester.executeRequest(req)
 	if result["code"] == 200:
 		return requester.response(result["data"], 200)
-	return requester.error(result["data"]["message"], 401)
+	if "message" in result["data"]:
+		return requester.error(result["data"]["message"], 401)
+	elif "error" in result["data"]:
+		return requester.error(result["data"]["error"], 401)
+	else:
+		return requester.error("There is an error, try again", 401)
 
 @subApp.route('/project', methods=['POST'])
 def subscribeProject():
@@ -184,7 +209,12 @@ def subscribeProject():
 	result = requester.executeRequest(req)
 	if result["code"] == 200:
 		return requester.response(result["data"], 200)
-	return requester.error(result["data"]["message"], 401)
+	if "message" in result["data"]:
+		return requester.error(result["data"]["message"], 401)
+	elif "error" in result["data"]:
+		return requester.error(result["data"]["error"], 401)
+	else:
+		return requester.error("There is an error, try again", 401)
 
 @subApp.route('/project', methods=['DELETE'])
 def unsubscribeProject():
@@ -198,7 +228,12 @@ def unsubscribeProject():
 	result = requester.executeRequest(req)
 	if result["code"] == 200:
 		return requester.response(result["data"], 200)
-	return requester.error(result["data"]["message"], 401)
+	if "message" in result["data"]:
+		return requester.error(result["data"]["message"], 401)
+	elif "error" in result["data"]:
+		return requester.error(result["data"]["error"], 401)
+	else:
+		return requester.error("There is an error, try again", 401)
 
 @subApp.route('/project/files', methods=['GET'])
 def getProjectFiles():
@@ -212,7 +247,12 @@ def getProjectFiles():
 	result = requester.executeRequest(req)
 	if result["code"] == 200:
 		return requester.response(result["data"], 200)
-	return requester.error(result["data"]["message"], 401)
+	if "message" in result["data"]:
+		return requester.error(result["data"]["message"], 401)
+	elif "error" in result["data"]:
+		return requester.error(result["data"]["error"], 401)
+	else:
+		return requester.error("There is an error, try again", 401)
 
 @subApp.route('/project/marks', methods=['GET'])
 def getProjectMarks():
@@ -226,7 +266,12 @@ def getProjectMarks():
 	result = requester.executeRequest(req)
 	if result["code"] == 200:
 		return requester.response(result["data"], 200)
-	return requester.error(result["data"]["message"], 401)
+	if "message" in result["data"]:
+		return requester.error(result["data"]["message"], 401)
+	elif "error" in result["data"]:
+		return requester.error(result["data"]["error"], 401)
+	else:
+		return requester.error("There is an error, try again", 401)
 
 @subApp.route('/allmodules', methods=['GET'])
 def getModules():
@@ -243,7 +288,12 @@ def getModules():
 	result = requester.executeRequest(req)
 	if result["code"] == 200:
 		return requester.response(result["data"], 200)
-	return requester.error(result["data"]["message"], 401)
+	if "message" in result["data"]:
+		return requester.error(result["data"]["message"], 401)
+	elif "error" in result["data"]:
+		return requester.error(result["data"]["error"], 401)
+	else:
+		return requester.error("There is an error, try again", 401)
 
 @subApp.route('/modules', methods=['GET']) #ERROR500
 def getUserModules():
@@ -276,7 +326,12 @@ def getModule():
 	result = requester.executeRequest(req)
 	if result["code"] == 200:
 		return requester.response(result["data"], 200)
-	return requester.error(result["data"]["message"], 401)
+	if "message" in result["data"]:
+		return requester.error(result["data"]["message"], 401)
+	elif "error" in result["data"]:
+		return requester.error(result["data"]["error"], 401)
+	else:
+		return requester.error("There is an error, try again", 401)
 
 @subApp.route('/module', methods=['POST'])
 def subscribeModule():
@@ -290,7 +345,12 @@ def subscribeModule():
 	result = requester.executeRequest(req)
 	if result["code"] == 200:
 		return requester.response(result["data"], 200)
-	return requester.error(result["data"]["message"], 401)
+	if "message" in result["data"]:
+		return requester.error(result["data"]["message"], 401)
+	elif "error" in result["data"]:
+		return requester.error(result["data"]["error"], 401)
+	else:
+		return requester.error("There is an error, try again", 401)
 
 @subApp.route('/module', methods=['DELETE'])
 def unsubscribeModule():
@@ -304,7 +364,12 @@ def unsubscribeModule():
 	result = requester.executeRequest(req)
 	if result["code"] == 200:
 		return requester.response(result["data"], 200)
-	return requester.error(result["data"]["message"], 401)
+	if "message" in result["data"]:
+		return requester.error(result["data"]["message"], 401)
+	elif "error" in result["data"]:
+		return requester.error(result["data"]["error"], 401)
+	else:
+		return requester.error("There is an error, try again", 401)
 
 @subApp.route('/module/registered', methods=['GET'])
 def registeredModule():
@@ -318,7 +383,12 @@ def registeredModule():
 	result = requester.executeRequest(req)
 	if result["code"] == 200:
 		return requester.response(result["data"], 200)
-	return requester.error(result["data"]["message"], 401)
+	if "message" in result["data"]:
+		return requester.error(result["data"]["message"], 401)
+	elif "error" in result["data"]:
+		return requester.error(result["data"]["error"], 401)
+	else:
+		return requester.error("There is an error, try again", 401)
 
 @subApp.route('/event', methods=['GET'])
 def getEvent():
@@ -332,7 +402,12 @@ def getEvent():
 	result = requester.executeRequest(req)
 	if result["code"] == 200:
 		return requester.response(result["data"], 200)
-	return requester.error(result["data"]["message"], 401)
+	if "message" in result["data"]:
+		return requester.error(result["data"]["message"], 401)
+	elif "error" in result["data"]:
+		return requester.error(result["data"]["error"], 401)
+	else:
+		return requester.error("There is an error, try again", 401)
 
 @subApp.route('/event', methods=['POST'])
 def subscribeEvent():
@@ -346,7 +421,12 @@ def subscribeEvent():
 	result = requester.executeRequest(req)
 	if result["code"] == 200:
 		return requester.response(result["data"], 200)
-	return requester.error(result["data"]["message"], 401)
+	if "message" in result["data"]:
+		return requester.error(result["data"]["message"], 401)
+	elif "error" in result["data"]:
+		return requester.error(result["data"]["error"], 401)
+	else:
+		return requester.error("There is an error, try again", 401)
 
 @subApp.route('/event', methods=['DELETE'])
 def unsubscribeEvent():
@@ -360,7 +440,84 @@ def unsubscribeEvent():
 	result = requester.executeRequest(req)
 	if result["code"] == 200:
 		return requester.response(result["data"], 200)
-	return requester.error(result["data"]["message"], 401)
+	if "message" in result["data"]:
+		return requester.error(result["data"]["message"], 401)
+	elif "error" in result["data"]:
+		return requester.error(result["data"]["error"], 401)
+	else:
+		return requester.error("There is an error, try again", 401)
+
+@subApp.route('/event/rdv', methods=['GET'])
+def getEventSlots():
+	try:
+		route = "/module/{0}/{1}/{2}/{3}/rdv?format=json".format(getArg("year"), getArg("module"), getArg("instance"), getArg("activity"))
+	except URLArgError as e:
+		return requester.error(e.message, 401)
+	req = getTokenRequest(make_route(route), "GET")
+	if not req:
+		return requester.error("Missing token", 401)
+	result = requester.executeRequest(req)
+	if result["code"] == 200:
+		return requester.response(result["data"], 200)
+	if "message" in result["data"]:
+		return requester.error(result["data"]["message"], 401)
+	elif "error" in result["data"]:
+		return requester.error(result["data"]["error"], 401)
+	else:
+		return requester.error("There is an error, try again", 401)
+
+@subApp.route('/event/rdv', methods=['POST'])
+def subscribeEventSlot():
+	try:
+		team = getArg("team")
+		if team:
+			target = "id_team={0}".format(team)
+		else:
+			target = "login={0}".format(getArg("login"))
+		route = "/module/{0}/{1}/{2}/{3}/rdv/register?id_creneau={4}&{5}&format=json".format(getArg("year"), getArg("module"), getArg("instance"), getArg("activity"), getArg("creneau"), target)
+	except URLArgError as e:
+		return requester.error(e.message, 401)
+	req = getTokenRequest(make_route(route), "POST")
+	if not req:
+		return requester.error("Missing token", 401)
+	result = requester.executeRequest(req)
+	if result["code"] == 200:
+		return requester.response(result["data"], 200)
+	if "message" in result["data"]:
+		return requester.error(result["data"]["message"], 401)
+	elif "error" in result["data"]:
+		return requester.error(result["data"]["error"], 401)
+	else:
+		return requester.error("There is an error, try again", 401)
+
+@subApp.route('/event/rdv', methods=['DELETE'])
+def unsubscribeEventSlot():
+	try:
+		team = getArg("team")
+		if team:
+			target = "id_team={0}".format(team)
+			body = { "value" : { "id_creneau" : getArg("creneau"), "id_team" : team } }
+		else:
+			target = "login={0}".format(getArg("login"))
+			body = { "value[0][id_creneau]" : getArg("creneau"), "value[0][login]" : getArg("login") }
+		route = "/module/{0}/{1}/{2}/{3}/rdv/unregister?id_creneau={4}&{5}&format=json".format(getArg("year"), getArg("module"), getArg("instance"), getArg("activity"), getArg("creneau"), target)
+	except URLArgError as e:
+		return requester.error(e.message, 401)
+	except Exception as e:
+		print(e)
+	req = getTokenRequest(make_route(route), "POST", body)
+	if not req:
+		return requester.error("Missing token", 401)
+	result = requester.executeRequest(req)
+	print(result)
+	if result["code"] == 200:
+		return requester.response(result["data"], 200)
+	if "message" in result["data"]:
+		return requester.error(result["data"]["message"], 401)
+	elif "error" in result["data"]:
+		return requester.error(result["data"]["error"], 401)
+	else:
+		return requester.error("There is an error, try again", 401)
 
 @subApp.route('/event/registered', methods=['GET'])
 def registeredEvent():
@@ -374,7 +531,12 @@ def registeredEvent():
 	result = requester.executeRequest(req)
 	if result["code"] == 200:
 		return requester.response(result["data"], 200)
-	return requester.error(result["data"]["message"], 401)
+	if "message" in result["data"]:
+		return requester.error(result["data"]["message"], 401)
+	elif "error" in result["data"]:
+		return requester.error(result["data"]["error"], 401)
+	else:
+		return requester.error("There is an error, try again", 401)
 
 @subApp.route('/marks', methods=['GET'])
 def getMarks():
@@ -404,7 +566,12 @@ def getMessages():
 	result = requester.executeRequest(req)
 	if result["code"] == 200:
 		return requester.response(result["data"], 200)
-	return requester.error(result["data"]["message"], 401)
+	if "message" in result["data"]:
+		return requester.error(result["data"]["message"], 401)
+	elif "error" in result["data"]:
+		return requester.error(result["data"]["error"], 401)
+	else:
+		return requester.error("There is an error, try again", 401)
 
 @subApp.route('/alerts', methods=['GET'])
 def getAlerts():
@@ -415,7 +582,12 @@ def getAlerts():
 	result = requester.executeRequest(req)
 	if result["code"] == 200:
 		return requester.response(result["data"], 200)
-	return requester.error(result["data"]["message"], 401)
+	if "message" in result["data"]:
+		return requester.error(result["data"]["message"], 401)
+	elif "error" in result["data"]:
+		return requester.error(result["data"]["error"], 401)
+	else:
+		return requester.error("There is an error, try again", 401)
 
 #TODO : Check if user exist
 @subApp.route('/photo', methods=['GET'])
@@ -473,7 +645,12 @@ def getUserList():
 	result = requester.executeRequest(req)
 	if result["code"] == 200:
 		return requester.response(result["data"], 200)
-	return requester.error(result["data"]["message"], 401)
+	if "message" in result["data"]:
+		return requester.error(result["data"]["message"], 401)
+	elif "error" in result["data"]:
+		return requester.error(result["data"]["error"], 401)
+	else:
+		return requester.error("There is an error, try again", 401)
 
 #TODO : Use current user's login if no arg
 @subApp.route('/user', methods=['GET'])
@@ -489,7 +666,12 @@ def getUserInfos():
 	result = requester.executeRequest(req)
 	if result["code"] == 200:
 		return requester.response(result["data"], 200)
-	return requester.error(result["data"]["message"], 401)
+	if "message" in result["data"]:
+		return requester.error(result["data"]["message"], 401)
+	elif "error" in result["data"]:
+		return requester.error(result["data"]["error"], 401)
+	else:
+		return requester.error("There is an error, try again", 401)
 
 #TODO : Automatically use current user's login
 @subApp.route('/user/files', methods=['GET'])
@@ -512,7 +694,12 @@ def getUserFiles():
 			return requester.response(output, 200)
 		except formatter.DataError as e:
 			return requester.error(e.message, 401)
-	return requester.error(result["data"]["message"], 401)
+	if "message" in result["data"]:
+		return requester.error(result["data"]["message"], 401)
+	elif "error" in result["data"]:
+		return requester.error(result["data"]["error"], 401)
+	else:
+		return requester.error("There is an error, try again", 401)
 
 @subApp.route('/user/flags', methods=['GET'])
 def getUserFlags():
@@ -532,22 +719,27 @@ def getUserFlags():
 	resTxt = '{"flags": { ' + resTxt[start + len(startPattern) : end + 2]
 	if req.getCode() == 200:
 		return requester.response(json.loads(resTxt.replace("\n", "").replace("\t", "")), 200)
-	return requester.error(result["data"]["message"], 401)
+	if "message" in result["data"]:
+		return requester.error(result["data"]["message"], 401)
+	elif "error" in result["data"]:
+		return requester.error(result["data"]["error"], 401)
+	else:
+		return requester.error("There is an error, try again", 401)
 
 
 
 
 
-@subApp.route('/project/<pid>', methods=['GET'])
-def test(pid):
-	try:
-		route = "/module/{0}/?format=json".format(pid)
-	except URLArgError as e:
-		return requester.error(e.message, 401)
-	req = getTokenRequest(make_route(route), "POST")
-	if not req:
-		return requester.error("Missing token", 401)
-	result = requester.executeRequest(req)
-	if result["code"] == 200:
-		return requester.response(result["data"], 200)
-	return requester.error(result["data"]["message"], 401)
+#@subApp.route('/project/<pid>', methods=['GET'])
+#def test(pid):
+#	try:
+#		route = "/module/{0}/?format=json".format(pid)
+#	except URLArgError as e:
+#		return requester.error(e.message, 401)
+#	req = getTokenRequest(make_route(route), "POST")
+#	if not req:
+#		return requester.error("Missing token", 401)
+#	result = requester.executeRequest(req)
+#	if result["code"] == 200:
+#		return requester.response(result["data"], 200)
+#	return requester.error(result["data"]["message"], 401)
