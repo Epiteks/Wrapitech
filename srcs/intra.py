@@ -126,7 +126,7 @@ def subscribePlanning():
 @subApp.route('/planning', methods=['DELETE'])
 def unsubscribePlanning():
 	try:
-		route = "/planning/{0}/{1}/unsubscribe?format=json".format(getArg("calendar"), getArg("event"))
+		route = "/intra/planning/{0}/{1}/unsubscribe?format=json".format(getArg("calendar"), getArg("event"))
 	except URLArgError as e:
 		return requester.error(e.message, 401)
 	req = getTokenRequest(make_route(route), "POST")
