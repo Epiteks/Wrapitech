@@ -503,13 +503,10 @@ def unsubscribeEventSlot():
 		route = "/module/{0}/{1}/{2}/{3}/rdv/unregister?id_creneau={4}&{5}&format=json".format(getArg("year"), getArg("module"), getArg("instance"), getArg("activity"), getArg("creneau"), target)
 	except URLArgError as e:
 		return requester.error(e.message, 401)
-	except Exception as e:
-		print(e)
 	req = getTokenRequest(make_route(route), "POST", body)
 	if not req:
 		return requester.error("Missing token", 401)
 	result = requester.executeRequest(req)
-	print(result)
 	if result["code"] == 200:
 		return requester.response(result["data"], 200)
 	if "message" in result["data"]:
