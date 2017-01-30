@@ -496,10 +496,10 @@ def unsubscribeEventSlot():
 		team = getArg("team", False)
 		if team:
 			target = "id_team={0}".format(team)
-			body = { "value" : { "id_creneau" : getArg("creneau"), "id_team" : team } }
+			body = { "value" : { "id_creneau" : str(getArg("creneau")), "id_team" : team } }
 		else:
 			target = "login={0}".format(getArg("login"))
-			body = { "value[0][id_creneau]" : getArg("creneau"), "value[0][login]" : getArg("login") }
+			body = { "value[0][id_creneau]" : str(getArg("creneau")), "value[0][login]" : getArg("login") }
 		route = "/module/{0}/{1}/{2}/{3}/rdv/unregister?id_creneau={4}&{5}&format=json".format(getArg("year"), getArg("module"), getArg("instance"), getArg("activity"), getArg("creneau"), target)
 	except URLArgError as e:
 		return requester.error(e.message, 401)
