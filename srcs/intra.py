@@ -603,7 +603,7 @@ def getPhoto():
 def setToken():
 	try:
 		route = "/module/{0}/{1}/{2}/{3}/{4}/token?format=json".format(getArg("year"), getArg("module"), getArg("instance"), getArg("activity"), getArg("event"))
-		data = {"token": getArg("token")}# Optional : {"rate": 1, "comment": ""}
+		data = {"token": getArg("code")}# Optional : {"rate": 1, "comment": ""}
 	except URLArgError as e:
 		return requester.error(e.message, 401)
 	req = getTokenRequest(make_route(route), "POST", data)
