@@ -603,9 +603,9 @@ def getPhoto():
 def setToken():
 	try:
 		data = json.loads(request.data)
-		if "code" not in data:
+		if "token" not in data:
 			return requester.error("Missing token", 400)
-		data = {"token": data["code"]}# Optional : {"rate": 1, "comment": ""}
+		data = {"token": data["token"]}# Optional : {"rate": 1, "comment": ""}
 		route = "/module/{0}/{1}/{2}/{3}/{4}/token?format=json".format(getArg("year"), getArg("module"), getArg("instance"), getArg("activity"), getArg("event"))
 	except URLArgError as e:
 		return requester.error(e.message, 401)
