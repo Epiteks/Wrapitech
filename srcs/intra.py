@@ -469,7 +469,7 @@ def getEventSlots():
 @subApp.route('/event/rdv', methods=['POST'])
 def subscribeEventSlot():
 	try:
-		team = getArg("team")
+		team = getArg("team", False)
 		if team:
 			target = "id_team={0}".format(team)
 		else:
