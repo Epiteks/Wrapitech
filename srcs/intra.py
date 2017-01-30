@@ -493,7 +493,7 @@ def subscribeEventSlot():
 @subApp.route('/event/rdv', methods=['DELETE'])
 def unsubscribeEventSlot():
 	try:
-		team = getArg("team")
+		team = getArg("team", False)
 		if team:
 			target = "id_team={0}".format(team)
 			body = { "value" : { "id_creneau" : getArg("creneau"), "id_team" : team } }
