@@ -32,7 +32,7 @@ class	Request(object):
 	def	execute(self):
 		try:
 			self._done = True
-			self._request = self._types[self._method](self._url, data=self._data, headers=self._headers, cookies=self._cookies)
+			self._request = self._types[self._method](self._url, data=self._data, headers=self._headers, cookies=self._cookies, verify=False)
 			return True if self._request.status_code == 200 else False
 		except Exception as e:
 			raise RequestError(str(e))
