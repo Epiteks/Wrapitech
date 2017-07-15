@@ -74,7 +74,7 @@ def login():
 	req = requester.Request(make_route("/?format=json"), "POST", body)
 	result = requester.executeRequest(req)
 	if result["code"] == 200:
-		token = req.getCookies()['PHPSESSID']
+		token = req.getCookies()['user']
 		return requester.response({"token": token}, 200)
 	else:
 		if "message" in result["data"]:
