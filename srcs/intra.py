@@ -39,7 +39,8 @@ def checkAuth():
 def	getTokenRequest(url, method, data=None):
 	req = requester.Request(url, method, data)
 	try:
-		req.setCookie("PHPSESSID", getArg("token"))
+#		req.setCookie("PHPSESSID", getArg("token"))
+		req.setCookie("user", getArg("token"))
 		return req
 	except URLArgError:
 		return None
