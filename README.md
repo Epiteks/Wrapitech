@@ -1,8 +1,10 @@
-# Epitech API
+# Wrapitech
+
+Wrapper for Epitech API
 
 ## Informations
 
-URL : http://epitech.hug33k.fr/
+URL : https://epitech.hug33k.fr/
 
 ## Available services
 
