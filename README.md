@@ -4,7 +4,7 @@ Wrapper for Epitech API
 
 ## Informations
 
-URL : https://epitech.hug33k.fr/
+URL : https://api.epiteks.xyz/
 
 ## Available services
 
