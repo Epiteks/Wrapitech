@@ -1,5 +1,7 @@
 # Blueprint Intra
 
+Route : `https://api.epiteks.xyz/intra/`
+
 ## Routes
 
 ### POST /login
