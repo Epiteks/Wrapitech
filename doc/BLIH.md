@@ -1,5 +1,7 @@
 # Blueprint BLIH
 
+Route : `https://api.epiteks.xyz/blih/`
+
 ## General
 
 ### GET /
