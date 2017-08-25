@@ -27,7 +27,7 @@ class	Request(object):
 		self._error = None
 		self._request = None
 		self._cookies = {}
-		self._headers = {"Content-Type": "application/json"}
+		self._headers = {"Content-Type": "application/json", "Accept-Language": "fr,en-US;q=0.8,en;q=0.6"}
 
 	def	execute(self):
 		try:
